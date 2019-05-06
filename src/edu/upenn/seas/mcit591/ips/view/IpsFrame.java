@@ -53,7 +53,8 @@ public class IpsFrame extends JFrame {
 		/**
 		 * 1. Welcome Panel 
 		 * 2. Personal Info Panel 
-		 * 3. Risk Tolerance Panel 
+		 * 3. Risk Tolerance Panel
+		 * 4. Risk Tolerance Panel 2  
 		 * 4. Risk Objective Panel 
 		 * 5. Return Objective Panel 
 		 * 6. Recommend Portfolio Panel
@@ -73,21 +74,26 @@ public class IpsFrame extends JFrame {
 		JPanel riskTolerancePanel = new RiskTolerancePanel();
 		riskTolerancePanel.setPreferredSize(new Dimension(800, 1000));
 		cardPanel.add(riskTolerancePanel, "3");
+		
+		// 4rd Panel
+		JPanel riskTolerancePanel2 = new RiskTolerancePanel2();
+		riskTolerancePanel2.setPreferredSize(new Dimension(800, 1000));
+		cardPanel.add(riskTolerancePanel2, "4");
 
-		// 4th Panel
+		// 5th Panel
 		JPanel riskObjectivePanel = new RiskObjectivePanel();
 		riskObjectivePanel.setPreferredSize(new Dimension(800, 1000));
-		cardPanel.add(riskObjectivePanel, "4");
+		cardPanel.add(riskObjectivePanel, "5");
 		
-		// 5th panel
+		// 6th panel
 		JPanel returnObjectivePanel = new ReturnObjectivePanel();
 		returnObjectivePanel.setPreferredSize(new Dimension(800, 800));
-		cardPanel.add(returnObjectivePanel, "5");
+		cardPanel.add(returnObjectivePanel, "6");
 
-		// 6th panel
+		// 7th panel
 		JPanel recommendPortfolioPanel = new RecommendPortfolioPanel();
 		recommendPortfolioPanel.setPreferredSize(new Dimension(800, 700));
-		cardPanel.add(recommendPortfolioPanel, "6");
+		cardPanel.add(recommendPortfolioPanel, "7");
 
 		
 		return cardPanel;
@@ -126,20 +132,24 @@ public class IpsFrame extends JFrame {
 		// add nextbtn in ActionListener
 		nextBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				
 
-				if (currentCard < 6) {
+				if (currentCard < 7) {
 
 					// increment the value of currentcard by 1
 					currentCard += 1;
-
+					cardPanel.revalidate();
 					// show the value of currentcard
 					cl.show(cardPanel, "" + (currentCard));
 				}
 				
 				Dimension dim = new Dimension();
                 for (Component comp : cardPanel.getComponents()) {
+                	
                     if (comp.isVisible() == true) {
                         dim = comp.getPreferredSize();
+                        
                     }
                 }
                 setPreferredSize(dim);

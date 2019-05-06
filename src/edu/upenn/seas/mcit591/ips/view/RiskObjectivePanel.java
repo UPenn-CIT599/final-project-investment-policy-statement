@@ -12,9 +12,14 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 public class RiskObjectivePanel extends JPanel {
-	
+	JLabel label2 = new JLabel("<html>Willingness: your risk score is __ out of ___</html>");
 	private static final long serialVersionUID = 3237437573175694458L;
-
+	
+	public int getSum() {
+		return RiskTolerancePanel.getSum();
+	}
+	
+	
 	public RiskObjectivePanel(){
 		
 		
@@ -29,7 +34,9 @@ public class RiskObjectivePanel extends JPanel {
         label1.setBorder(new EmptyBorder(50, 0, 30, 0));
         this.add(label1);
         
-        JLabel label2 = new JLabel("<html>Willingness: your risk score is __ out of ___</html>");
+        int sum = getSum();
+        System.out.println(sum);
+        this.label2.setText("<html>Willingness: your risk score is" + sum + "out of ___</html>");
         label2.setFont(new Font("Bell MT", Font.BOLD, 25));
         label2.setBorder(new EmptyBorder(50, 0, 30, 0));
         this.add(label2);
