@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,9 +12,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 import edu.upenn.seas.mcit591.ips.main.MyCardLayout;
-
+import java.awt.Insets;
 
 public class IpsFrame extends JFrame {
 
@@ -22,12 +25,16 @@ public class IpsFrame extends JFrame {
 	private int currentCard = 1;
 
 	private CardLayout cl;
-
+	
+	
+	public JPanel cardPanel; 
+	
+	
 	public IpsFrame() {
 
 		setTitle("Wealth Organizer IPS");
 
-		JPanel cardPanel = getCardPanel();
+		this.cardPanel = getCardPanel();
 		getContentPane().add(cardPanel, BorderLayout.CENTER);
 
 		JPanel buttonPanel = createButtonPanel(cardPanel);
@@ -41,7 +48,8 @@ public class IpsFrame extends JFrame {
         
         this.setLocation(150, 150);
 	}
-
+	
+	
 	private JPanel getCardPanel() {
 
 		JPanel cardPanel = new JPanel();
@@ -50,16 +58,22 @@ public class IpsFrame extends JFrame {
 		cl = new MyCardLayout();
 		cardPanel.setLayout(cl);
 
+		drawCards(cardPanel);
+		
+		return cardPanel;
+	}
+
+	private void drawCards(JPanel cardPanel) {
+		
 		/**
 		 * 1. Welcome Panel 
 		 * 2. Personal Info Panel 
-		 * 3. Risk Tolerance Panel
-		 * 4. Risk Tolerance Panel 2  
+		 * 3. Risk Tolerance Panel 
 		 * 4. Risk Objective Panel 
 		 * 5. Return Objective Panel 
 		 * 6. Recommend Portfolio Panel
 		 */
-
+		
 		// 1st panel
 		JPanel welcomePanel = new WelcomePanel();
 		welcomePanel.setPreferredSize(new Dimension(1200, 1000));
@@ -96,8 +110,8 @@ public class IpsFrame extends JFrame {
 		cardPanel.add(recommendPortfolioPanel, "7");
 
 		
-		return cardPanel;
 	}
+	
 
 	private JPanel createButtonPanel(JPanel cardPanel) {
 		JPanel buttonPanel = new JPanel();
@@ -133,13 +147,50 @@ public class IpsFrame extends JFrame {
 		nextBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				String errorReport = "";
 				
-
+				//Sets data variables and updates cards 6 and 7 with proper info
+				if(currentCard == 4) {
+					TimeValueOfMoney newCalculation = new TimeValueOfMoney();
+					
+					newCalculation.calculateIRR(DataManager.getCurrentAssetHolding(), DataManager.getfutureValue(), DataManager.getAnnuity(), DataManager.getNumberofYears());
+					RiskScore newScore = new RiskScore();
+					newScore.setQuestionAnswers();
+					DataManager.setRiskScoreVar();
+					DataManager.setWillingAndAbilityEquality();
+					DataManager.setIRR();
+					DataManager.setString();
+					SuggestedAllocation percents = new SuggestedAllocation();
+					double[] percent = percents.getBenchmarkCoefficient(DataManager.getRiskScore());
+					FutureValueCalc finalValue = new FutureValueCalc();
+					double FutureValue = finalValue.calculateFuturetValue(DataManager.getCurrentAssetHolding(), DataManager.getAnnuity(), DataManager.getNumberofYears(), DataManager.getIRR());
+					DataManager.setFutureValue(FutureValue);
+					DataManager.setFundPercent(percent);
+					DataManager.setTableForAllocation();
+					FinanceEquations newPortfolioReturn = new FinanceEquations();
+					DataManager.setPortfolioReturn(newPortfolioReturn.getPortfolioReturn(DataManager.getFundPercent()));
+					DataManager.setPortfolioStdDev(newPortfolioReturn.getPortfolioStandardDeviation((DataManager.getFundPercent())));
+					
+					cardPanel.revalidate();
+					cardPanel.repaint();
+					drawCards(cardPanel);
+				}
+				
+				
 				if (currentCard < 7) {
-
+					//ErrorControl
+					if(ErrorControl.errorCheck(currentCard)) {
+						cardPanel.revalidate();
+						cardPanel.repaint();
+						drawCards(cardPanel);
+					}else {
 					// increment the value of currentcard by 1
 					currentCard += 1;
+					}
 					cardPanel.revalidate();
+					cardPanel.repaint();
+					drawCards(cardPanel);
+					
 					// show the value of currentcard
 					cl.show(cardPanel, "" + (currentCard));
 				}
@@ -166,6 +217,7 @@ public class IpsFrame extends JFrame {
 		previousBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// if condition apply
+				
 				if (currentCard > 1) {
 
 					// decrement the value
@@ -193,4 +245,8 @@ public class IpsFrame extends JFrame {
 		});
 		return buttonPanel;
 	}
+	
+	
+	
+	
 }

@@ -18,6 +18,10 @@ import javax.swing.border.EmptyBorder;
 
 public class RiskTolerancePanel2 extends JPanel {
 
+	public int q1selected = 0;
+	public int q2selected = 0;
+	public int q3selected = 0;
+	
 	private JButton okButton;
 
 	private static final long serialVersionUID = 7133849259611110654L;
@@ -31,12 +35,13 @@ public class RiskTolerancePanel2 extends JPanel {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		JLabel label1 = new JLabel(
-				"<html>The following questionnaire is a continuation from the previous page.</html>");
+				"<html>The following questionnaire is a continuation from the previous page."
+				+ "<font color='red'>"+ ErrorControl.getError() +"</font></html>");
 		label1.setBorder(new EmptyBorder(50, 0, 10, 0));
 		this.add(label1);
 
 		JLabel q1 = new JLabel(
-				"<html>Q1: I would describe my knowledge of investments as...</html>");
+				"<html>Q4: I would describe my knowledge of investments as...</html>");
 		q1.setBorder(new EmptyBorder(50, 0, 10, 0));
 		ButtonGroup q1ButtonGroup = new ButtonGroup();
 		JRadioButton q1a = new JRadioButton("None");
@@ -54,7 +59,7 @@ public class RiskTolerancePanel2 extends JPanel {
 		q1ButtonGroup.add(q1c);
 		q1ButtonGroup.add(q1d);
 		
-		JLabel q2 = new JLabel("<html>Q2: What is your household profile? </html>");
+		JLabel q2 = new JLabel("<html>Q5: What is your household profile? </html>");
 		q2.setBorder(new EmptyBorder(50, 0, 10, 0));
 		ButtonGroup q2ButtonGroup = new ButtonGroup();
 		JRadioButton q2a = new JRadioButton("Single income, no dependents");
@@ -78,7 +83,7 @@ public class RiskTolerancePanel2 extends JPanel {
 		q2ButtonGroup.add(q2e);
 		q2ButtonGroup.add(q2f);
 
-		JLabel q3 = new JLabel("Q3: What is your main current asset holding?");
+		JLabel q3 = new JLabel("Q6: What is your main current asset holding?");
 		q3.setBorder(new EmptyBorder(50, 0, 10, 0));
 		ButtonGroup q3ButtonGroup = new ButtonGroup();
 		JRadioButton q3a = new JRadioButton("Cash");
@@ -114,51 +119,78 @@ public class RiskTolerancePanel2 extends JPanel {
 							// value
 
 				if (q1a.isSelected()) {
+					q1selected++;
 					point1 += 0;// make sure these are correct value for
 									// calculation
 				} else if (q1b.isSelected()) {
+					q1selected++;
 					point1 += 5;
 				} else if (q1c.isSelected()) {
+					q1selected++;
 					point1 += 10;
 				}else if(q1d.isSelected()) {
+					q1selected++;
 					point1 += 20;
 				}
 
 				if (q2a.isSelected()) {
+					q2selected++;
 					point2 += 10;// make sure these are correct value for
 								// calculation
 				} else if (q2b.isSelected()) {
+					q2selected++;
 					point2 += 0;
 				} else if (q2c.isSelected()) {
+					q2selected++;
 					point2 += 20;
 				} else if (q2d.isSelected()) {
+					q2selected++;
 					point2 += 5;
 				} else if (q2e.isSelected()) {
+					q2selected++;
 					point3 += 10;
 				} else if (q2f.isSelected()) {
+					q2selected++;
 					point3 += 20;
 				}
 
 
 				if (q3a.isSelected()) {
+					q3selected++;
 					point3 += 0;// make sure these are correct value for
 									// calculation
 				} else if (q3b.isSelected()) {
+					q3selected++;
 					point3 += 5;
 				} else if (q3c.isSelected()) {
+					q3selected++;
 					point3 += 10;
 				} else if (q3d.isSelected()) {
+					q3selected++;
 					point3 += 20;
 				}
-
-				sum = point1 + point2 + point3;
+				if(q1selected==0 && q2selected==0 && q1selected==0) {
+					ErrorControl.setTolerancePanelError(true);
+//				setpanelError(true);
+				
+				}else {
+					ErrorControl.setError(" ");
+				ErrorControl.setTolerancePanelError(false);
+				
+				
+				DataManager.setQuestion4(point1);
+				DataManager.setQuestion5(point2);
+				DataManager.setQuestion6(point3);
+				
+				}
+				
 				// System.out.println("sum is "+ sum);
 
 			}
 		});
 		
 		for(Component comp: this.getComponents()) {
-			comp.setFont(new Font("Arial", Font.PLAIN, 18));
+			comp.setFont(new Font("Arial", Font.PLAIN, 14));
 		}
 		
 	}

@@ -47,7 +47,7 @@ public class WelcomePanel extends JPanel {
         		+ "\r\n\r\nIt is understood that there can be no guarantee about the attainment of the goals or investment objectives outlined herein."
         		+ "\r\n\r\nThis IPS generator DOES NOT collect or share any data you provided.");
         txtPurpose.setEditable(false);
-        txtPurpose.setFont(new Font("Arial", Font.PLAIN, 18));
+        txtPurpose.setFont(new Font("Arial", Font.PLAIN, 16));
         txtPurpose.setBorder(new EmptyBorder(50, 50, 10, 0));
         this.add(txtPurpose);
         

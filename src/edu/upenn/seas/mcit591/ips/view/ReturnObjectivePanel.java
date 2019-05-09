@@ -1,6 +1,7 @@
 package edu.upenn.seas.mcit591.ips.view;
 
 import java.awt.Font;
+import java.util.Calendar;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -21,20 +22,20 @@ public class ReturnObjectivePanel extends JPanel {
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
-        JLabel label1 = new JLabel("<html>Based on the information you provided, here is a listing of your required rate of return (//after tax or before tax ) is: </html>");
-        label1.setFont(new Font("Bell MT", Font.BOLD, 25));
+        JLabel label1 = new JLabel(DataManager.getIRRstring());
+        label1.setFont(new Font("Bell MT", Font.BOLD, 16));
         label1.setBorder(new EmptyBorder(50, 0, 30, 0));
         this.add(label1);
         
-        JLabel label2 = new JLabel("<html>For the retirement amount you entered, your after-tax required rate of return is ___% at the age of 65.</html>");
-        label2.setFont(new Font("Bell MT", Font.BOLD, 25));
-        label2.setBorder(new EmptyBorder(50, 0, 30, 0));
-        this.add(label2);
-        
-        JLabel label3 = new JLabel("<html>From ____ to ____, your required rate of return is ___%. By the end of ___, you will have an estimated asset of $___.</html>");
-        label3.setFont(new Font("Bell MT", Font.BOLD, 25));
+        JLabel label3 = new JLabel("<html>From "+ DataManager.getAge() + " to 65, your required rate of return is <font color='red'>" + String.format("%.2f", DataManager.getIRR()) + "</font>%. By the end of " + (Calendar.getInstance().get(Calendar.YEAR) + DataManager.getNumberofYears())  + ", you will have an estimated asset of $"+ String.format("%.2f", DataManager.getFutureValue())+".</html>");
+        label3.setFont(new Font("Bell MT", Font.BOLD, 16));
         label3.setBorder(new EmptyBorder(50, 0, 90, 0));
         this.add(label3);
+        
+        JLabel label2 = new JLabel(DataManager.getIRRString2());
+        label2.setFont(new Font("Bell MT", Font.BOLD, 16));
+        label2.setBorder(new EmptyBorder(50, 0, 30, 0));
+        this.add(label2);
         
 	}
 

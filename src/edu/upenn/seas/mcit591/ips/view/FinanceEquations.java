@@ -1,38 +1,37 @@
 package edu.upenn.seas.mcit591.ips.view;
-
-import java.lang.Math.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+	
+public class FinanceEquations {
 
-
-public class PortfolioAllocation {
+	/*
+	 * This class calculates the portfolio return and risk, aka standard deviation, based on the finance algrithom. 
+	 * For further information on the math model, please refer to 
+	 * website https://www.wallstreetmojo.com/portfolio-standard-deviation/
+	 */
 
 		int riskScore; // risk score from user
 		double returnObjective; // return objective from user
 
 		// declare variables for return allocation portion to each asset class
 
-		double VTIallocation;
-		double VOallocation;
-		double VBallocation;
-		double SHYallocation;
-		double BNDallocation;
-		double TLTallocation;
-		double TIPallocation;
-		double MUBallocation;
-		double VEUallocation;
-		double VSSallocation;
-		double VWOallocation;
-		double VNQallocation;
-		double GLDallocation;
-		
-		// a set of value 
+		public double VTIallocation;
+		public double VOallocation;
+		public double VBallocation;
+		public double SHYallocation;
+		public double BNDallocation;
+		public double TLTallocation;
+		public double TIPallocation;
+		public double MUBallocation;
+		public double VEUallocation;
+		public double VSSallocation;
+		public double VWOallocation;
+		public double VNQallocation;
+		public double GLDallocation;
 		
 		
-		
-		
+	//	double [] Coefficient = { VTIallocation,VOallocation,VBallocation,SHYallocation,BNDallocation,TLTallocation,TIPallocation, MUBallocation,
+	//			 VEUallocation,	VSSallocation,VWOallocation,VNQallocation,GLDallocation};
 
 		// declare variables for return value to each asset class
 
@@ -147,9 +146,53 @@ public class PortfolioAllocation {
 		double CorrGLDvsVWO = 0.55;
 		double CorrGLDvsVNQ = 0.48;
 
-	
+		
+		
+		public double getPortfolioReturn (double[] Coefficient){
+		
 
-		public double getPortfolioStandardDeviation() {
+			 VTIallocation = Coefficient[0]/100;
+			 VOallocation = Coefficient[1]/100; 
+			 VBallocation = Coefficient[2]/100;
+			 SHYallocation = Coefficient[3]/100;
+			 BNDallocation = Coefficient[4]/100;
+			 TLTallocation = Coefficient[5]/100;
+			 TIPallocation = Coefficient[6]/100;
+			 MUBallocation = Coefficient[7]/100;
+			 VEUallocation = Coefficient[8]/100;
+			 VSSallocation = Coefficient[9]/100;
+			 VWOallocation = Coefficient[10]/100;
+			 VNQallocation = Coefficient[11]/100;
+			 GLDallocation = Coefficient[12]/100;
+			
+				double[] Individualreturn = {0.1166, 0.1126, 0.1132, 0.0085, 0.0301, 0.0652, 0.0265, 0.0351, 0.0348, 0.0459, 0.017, 0.1021, 0.0137};
+				double sum = 0.0;
+				for(int i=0; i<13; i++) {
+					sum = sum+Individualreturn[i]*Coefficient[i];
+				}
+				return sum;
+				
+			}	
+			
+		
+			
+		public double getPortfolioStandardDeviation (double[] Coefficient){
+			
+			
+			 VTIallocation = Coefficient[0]/100;
+			 VOallocation =Coefficient[1]/100; 
+			 VBallocation = Coefficient[2]/100;
+			 SHYallocation = Coefficient[3]/100;
+			 BNDallocation = Coefficient[4]/100;
+			 TLTallocation = Coefficient[5]/100;
+			 TIPallocation = Coefficient[6]/100;
+			 MUBallocation = Coefficient[7]/100;
+			 VEUallocation = Coefficient[8]/100;
+			 VSSallocation = Coefficient[9]/100;
+			 VWOallocation = Coefficient[10]/100;
+			 VNQallocation = Coefficient[11]/100;
+			 GLDallocation = Coefficient[12]/100;
+			
 
 			double PortfolioStandardDeviation = Math.sqrt(Math.pow(VTIallocation * VTIstdv, 2) + Math.pow(VOallocation * VOstdv, 2)
 					+ Math.pow(VBallocation * VBstdv, 2) + Math.pow(SHYallocation * SHYstdv, 2)
@@ -236,21 +279,17 @@ public class PortfolioAllocation {
 					+ 2 * CorrGLDvsVSS * GLDstdv * VSSstdv * GLDallocation * VSSallocation
 					+ 2 * CorrGLDvsVWO * GLDstdv * VWOstdv * GLDallocation * VWOallocation
 					+ 2 * CorrGLDvsVNQ * GLDstdv * VNQstdv * GLDallocation * VNQallocation);
-
+		
+			
 			return PortfolioStandardDeviation;
-
 		}
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
-
-		
-		
-		
-		public static void main(String[] args) {
-			// TODO Auto-generated method stub
-//			getPortfolioReturn();
-//			calc();
-
-		}
+	}
 
 }
-

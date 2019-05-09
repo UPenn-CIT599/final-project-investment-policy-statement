@@ -1,3 +1,4 @@
+package edu.upenn.seas.mcit591.ips.view;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -7,11 +8,12 @@ import java.util.Map.Entry;
 
 public class TimeValueOfMoney {
 
-	double currentAssetHolding; // equal to sum of the user's asset holding input
-	double futureValue;// equal to user's input of future required expenditure
-	double annuity; // equal to user's input of annual fund available for investment
-	int numberofYears; // equal to the number of years between user's input of expenditure year and now
-	double InternalRateofReturn;// the return objective needed
+	public double currentAssetHolding; // equal to the user's asset holding input
+	public double futureValue;// equal to user's input of future required investment target amount
+	public double annuity; // equal to user's input of annual fund available for investment
+	public int numberofYears; // equal to the number of years between user's input of expenditure year and now
+	public double InternalRateofReturn;// the return objective needed
+	public double finalpresentValue;
 
 	// Method 1: to calculate present value given any annuity, number of years, and
 	// rate of return
@@ -29,8 +31,8 @@ public class TimeValueOfMoney {
 
 		}
 
-		double finalpresentValue = currentAssetHolding + presentValueofAnnuity + presentValueofFutureValue;
-
+		finalpresentValue = currentAssetHolding + presentValueofAnnuity + presentValueofFutureValue;
+		DataManager.setPresentValue(finalpresentValue);
 		return finalpresentValue;
 
 	}
@@ -38,6 +40,26 @@ public class TimeValueOfMoney {
 	/*
 	 * Method 2: to find the lowest value in a HashMap and return it's corresponding Key
 	 */
+
+	public void setCurrentAssetHolding() {
+		this.currentAssetHolding = DataManager.getCurrentAssetHolding();
+	}
+
+	public void setFutureValue() {
+		this.futureValue = DataManager.getfutureValue();
+	}
+
+	public void setAnnuity() {
+		this.annuity = DataManager.getAnnuity();
+	}
+
+	public void setNumberofYears() {
+		this.numberofYears = DataManager.getNumberofYears();
+	}
+
+	public void setInternalRateofReturn() {
+		InternalRateofReturn = DataManager.getRateofReturn();
+	}
 
 	public <K, V extends Comparable<V>> K minKeyUsingCollections(Map<K, V> map) {
 		Entry<K, V> minEntry = Collections.min(map.entrySet(), new Comparator<Entry<K, V>>() {
@@ -73,44 +95,18 @@ public class TimeValueOfMoney {
 		}
 
 		InternalRateofReturn = minKeyUsingCollections(NPVandRateList);
-
+		System.out.println(InternalRateofReturn);
 		return InternalRateofReturn;
 	}
 
-	/*
-	 * Method 4: to test whether the IRR returned is realistic and output the result for the user to understand
-	 */
 
-	public void analyzeReturnObjective(double InternalRateofReturn) {
-		
-		System.out.println("Based on the information you provided, your required rate of return is"
-				+ InternalRateofReturn * 100 + "%. ");
 
-		if (InternalRateofReturn > 0.19) {
-
-			System.out.println("Your investment return objective requires an investment return of more than"
-					+ InternalRateofReturn * 100 + "%."
-					+ " This is difficult to achieve within your length of investment horizon, investment funds, and desired investment goal. "
-					+ "Please consider revising your investment goal. You can proceed to check the recomended portfolio based on your risk profile.");
-
-		}
-		if (InternalRateofReturn == 0.00) {
-
-			System.out.println("Your investment return objective is zero or negative, which means your current fund is "
-					+ "sufficient to cover your investment objective. You can proceed to check the recomended portfolio based on your risk profile.");
-
-		}
-		else {
-			System.out.println("Please proceed to check the recomended portfolio based on your risk profile.");
-		}
-
-	}
 
 	public static void main(String[] args) {
 
-		TimeValueOfMoney testor = new TimeValueOfMoney();
+//		TimeValueOfMoney testor = new TimeValueOfMoney();
 
-		System.out.print(testor.calculateIRR(5000.0, -5000.0, 0.0, 4));
+//		System.out.print(testor.calculateIRR(5000.0, -5000.0, 0.0, 4));
 
 	}
 

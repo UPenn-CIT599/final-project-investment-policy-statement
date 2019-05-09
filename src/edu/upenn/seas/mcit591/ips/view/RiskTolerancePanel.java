@@ -20,6 +20,12 @@ public class RiskTolerancePanel extends JPanel {
 	public static int sum;
 	private JButton okButton;
 
+	public int q1selected = 0;
+	public int q2selected = 0;
+	public int q3selected = 0;
+	
+
+	
 	private static final long serialVersionUID = 7133849259611110654L;
 
 	public static void setSum(int sum) {
@@ -41,7 +47,8 @@ public class RiskTolerancePanel extends JPanel {
 
 		JLabel label1 = new JLabel(
 				"<html>The following questionnaire can help assess your risk tolerance in investing activities."
-						+ "Your risk tolerance has two parts: willingness to take risk and ability to take risk.</html>");
+						+ "Your risk tolerance has two parts: willingness to take risk and ability to take risk."
+						+ "<font color='red'>"+ ErrorControl.getError() +"</font></html>");
 		label1.setBorder(new EmptyBorder(50, 0, 8, 0));
 		this.add(label1);
 
@@ -81,29 +88,26 @@ public class RiskTolerancePanel extends JPanel {
 		q2ButtonGroup.add(q2c);
 		q2ButtonGroup.add(q2d);
 
-		JLabel q3 = new JLabel("Q3: What is your household profile?");
+		JLabel q3 = new JLabel("Q3: How much short-term investment risk are you willing to take in order to achieve larger long-term investment returns?");
 		q3.setBorder(new EmptyBorder(50, 0, 10, 0));
 		ButtonGroup q3ButtonGroup = new ButtonGroup();
-		JRadioButton q3a = new JRadioButton("Single income, no dependents");
-		JRadioButton q3b = new JRadioButton("Single income, at least one dependent");
-		JRadioButton q3c = new JRadioButton("Dual income, no dependents");
-		JRadioButton q3d = new JRadioButton("Dual income, at least one dependent");
-		JRadioButton q3e = new JRadioButton("Retired");
-		JRadioButton q3f = new JRadioButton("Financially independent");
+		JRadioButton q3a = new JRadioButton("I am not willing to take any risk");
+		JRadioButton q3b = new JRadioButton("I am willing to take a small amount of risk with my investments");
+		JRadioButton q3c = new JRadioButton("I am willing to take a moderate amount of risk with my investments");
+		JRadioButton q3d = new JRadioButton("I am willing to take as much risk as is needed with my investments");
+
 		this.add(q3);
 		this.add(q3a);
 		this.add(q3b);
 		this.add(q3c);
 		this.add(q3d);
-		this.add(q3e);
-		this.add(q3f);
+
 
 		q3ButtonGroup.add(q3a);
 		q3ButtonGroup.add(q3b);
 		q3ButtonGroup.add(q3c);
 		q3ButtonGroup.add(q3d);
-		q3ButtonGroup.add(q3e);
-		q3ButtonGroup.add(q3f);
+		
 
 		okButton = new JButton("OK");
 		add(okButton);
@@ -112,7 +116,7 @@ public class RiskTolerancePanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				
 				int point1 = 0;
 				int point2 = 0;
 				int point3 = 0;
@@ -122,40 +126,60 @@ public class RiskTolerancePanel extends JPanel {
 				if (q1a.isSelected()) {
 					point1 += 20;// make sure these are correct value for
 									// calculation
+					q1selected++;
 				} else if (q1b.isSelected()) {
-					point1 += 0;
+					point1 += 5;
+					q1selected++;
 				} else if (q1c.isSelected()) {
 					point1 += 10;
+					q1selected++;
 				}
 
 				if (q2a.isSelected()) {
 					point2 += 0;// make sure these are correct value for
 								// calculation
+					q2selected++;
 				} else if (q2b.isSelected()) {
 					point2 += 5;
+					q2selected++;
 				} else if (q2c.isSelected()) {
 					point2 += 10;
+					q2selected++;
 				} else if (q2d.isSelected()) {
 					point2 += 20;
+					q2selected++;
 				}
 
 				if (q3a.isSelected()) {
-					point3 += 20;// make sure these are correct value for
+					point3 += 0;// make sure these are correct value for
 									// calculation
+					q3selected++;
 				} else if (q3b.isSelected()) {
-					point3 += 10;
+					point3 += 5;
+					q2selected++;
 				} else if (q3c.isSelected()) {
-					point3 += 20;
+					point3 += 10;
+					q2selected++;
 				} else if (q3d.isSelected()) {
-					point3 += 10;
-				} else if (q3e.isSelected()) {
-					point3 += 10;
-				} else if (q3f.isSelected()) {
 					point3 += 20;
-				}
+					q2selected++;
+				} 
+				
+				//errorChecking
+				if(q1selected==0 && q2selected==0 && q1selected==0) {
+						ErrorControl.setTolerancePanelError(true);
+//					setpanelError(true);
+					
+				}else {
+					ErrorControl.setError(" ");
+					ErrorControl.setTolerancePanelError(false);
 
-				sum = point1 + point2 + point3;
-				setSum(sum);
+				DataManager.setQuestion1(point1);
+				DataManager.setQuestion2(point2);
+				DataManager.setQuestion3(point3);
+
+				}
+//				DataManager.sum = sum;
 				
 				// System.out.println("sum is "+ sum);
 
@@ -163,7 +187,7 @@ public class RiskTolerancePanel extends JPanel {
 		});
 		
 		for(Component comp: this.getComponents()) {
-			comp.setFont(new Font("Arial", Font.PLAIN, 12));
+			comp.setFont(new Font("Arial", Font.PLAIN, 14));
 		}
 		
 	}

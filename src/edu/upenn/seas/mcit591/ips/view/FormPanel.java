@@ -51,7 +51,7 @@ public class FormPanel extends JPanel{
 		occupationLabel = new JLabel("Occupation: ");
 		nameField = new JTextField(10);
 		occupationField = new JTextField(10);
-		ageLabel = new JLabel("Your Age: ");
+		ageLabel = new JLabel("Years to Retirement: ");
 		annualIncomeLabel = new JLabel("Annual income: ");
 		ageField = new JTextField(10);
 		annualIncomeField = new JTextField(10);
@@ -59,7 +59,7 @@ public class FormPanel extends JPanel{
 		currentAssetsField = new JTextField(10);
 		expensesLabel = new JLabel("Annual Expenses");
 		expensesField = new JTextField(10);
-		retiermentGoalLabel = new JLabel("Retierment Goal: ");
+		retiermentGoalLabel = new JLabel("Investment Target: ");
 		retiermentGoalField = new JTextField(10);
 		
 		nameLabel.setFont(new Font("Arial", Font.PLAIN, 22));
