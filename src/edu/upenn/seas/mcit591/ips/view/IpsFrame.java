@@ -32,7 +32,7 @@ public class IpsFrame extends JFrame {
 	
 	public IpsFrame() {
 
-		setTitle("Wealth Organizer IPS");
+		setTitle("Investment Policy Statement (IPS) Planner");
 
 		this.cardPanel = getCardPanel();
 		getContentPane().add(cardPanel, BorderLayout.CENTER);

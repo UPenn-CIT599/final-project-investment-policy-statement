@@ -140,7 +140,7 @@ public class DataManager {
 		OverallScore = getRiskScore.getOverallRiskScore(numberofYears, getQuestion1(), getQuestion2(), getQuestion3(), getQuestion4(), getQuestion5(), getQuestion6());
 		System.out.println(OverallScore+"****%%");
 		WillingnessScore = getRiskScore.getWillingnessRiskScore(getQuestion1(), getQuestion2(), getQuestion3(), getQuestion4());
-		AbilityScore = getRiskScore.getAbilityRiskScore(getQuestion5(), getQuestion6());
+		AbilityScore = getRiskScore.getAbilityRiskScore(getQuestion5(), getQuestion6(),numberofYears);
 	}
 	
 	public static int getRiskScore() {
@@ -155,10 +155,6 @@ public class DataManager {
 		return AbilityScore;
 	}
 	
-	
-//	public static void setQuestion1(int Q1) {
-//		Question1 = Q1;
-//	}
 	
 	//getter and setter for IRR calculation
 	public static void setIRR() {

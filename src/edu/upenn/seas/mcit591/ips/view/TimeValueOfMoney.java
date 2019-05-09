@@ -1,4 +1,5 @@
 package edu.upenn.seas.mcit591.ips.view;
+
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -15,8 +16,13 @@ public class TimeValueOfMoney {
 	public double InternalRateofReturn;// the return objective needed
 	public double finalpresentValue;
 
-	// Method 1: to calculate present value given any annuity, number of years, and
-	// rate of return
+	/*
+	 * Sub-Method: to calculate present value given any annuity, number of years,
+	 * and rate of return. Please note that this method serves for the purpose of
+	 * the calculateIRR method below This method does not directly provide user any
+	 * information
+	 * 
+	 */
 
 	public double calculatePresentValue(double currentAssetHolding, double futureValue, double annuity,
 			int numberofYears, double rateofReturn) {
@@ -38,7 +44,21 @@ public class TimeValueOfMoney {
 	}
 
 	/*
-	 * Method 2: to find the lowest value in a HashMap and return it's corresponding Key
+	 * Sub-Method: to find the lowest value in a HashMap and return it's
+	 * corresponding Key
+	 */
+
+	public <K, V extends Comparable<V>> K minKeyUsingCollections(Map<K, V> map) {
+		Entry<K, V> minEntry = Collections.min(map.entrySet(), new Comparator<Entry<K, V>>() {
+			public int compare(Entry<K, V> e1, Entry<K, V> e2) {
+				return e1.getValue().compareTo(e2.getValue());
+			}
+		});
+		return minEntry.getKey();
+	}
+
+	/*
+	 * Setters to pass value in the parameters for the calculate IRR method below
 	 */
 
 	public void setCurrentAssetHolding() {
@@ -61,19 +81,11 @@ public class TimeValueOfMoney {
 		InternalRateofReturn = DataManager.getRateofReturn();
 	}
 
-	public <K, V extends Comparable<V>> K minKeyUsingCollections(Map<K, V> map) {
-		Entry<K, V> minEntry = Collections.min(map.entrySet(), new Comparator<Entry<K, V>>() {
-			public int compare(Entry<K, V> e1, Entry<K, V> e2) {
-				return e1.getValue().compareTo(e2.getValue());
-			}
-		});
-		return minEntry.getKey();
-	}
-
 	/*
-	 * Method 3: to test various rate of return and get the rate that makes the net
-	 * present value (NPV) nearest to zero. this rate is called internal rate of
-	 * return (IRR)
+	 * User Output Method: to test various rate of return and get the rate that
+	 * makes the net present value (NPV) nearest to zero. this rate is called
+	 * internal rate of return (IRR). This IRR is the desired return requested by
+	 * the user.
 	 */
 
 	public double calculateIRR(double currentAssetHolding, double futureValue, double annuity, int numberofYears) {
@@ -85,10 +97,15 @@ public class TimeValueOfMoney {
 		// build hash map holding NPV and corresponding rate of return
 		HashMap<Double, Double> NPVandRateList = new HashMap<Double, Double>();
 
+		// IRR is a number that needs trial and error to find. Below is the algorithm
+		// based on finance knowledge
 		for (int i = 0; i < 100; i++) {
 			guessrateofReturn = 0.00 + 0.01 * i;
+
+			// Call sub-method above to repeat this loop
 			guessPresentValue = calculatePresentValue(currentAssetHolding, futureValue, annuity, numberofYears,
 					guessrateofReturn);
+
 			NPV = Math.abs(guessPresentValue); // the smallest absolute value gives the value closest to zero
 			System.out.println(NPV + "  " + guessrateofReturn);
 			NPVandRateList.put(guessrateofReturn, NPV);
@@ -97,17 +114,6 @@ public class TimeValueOfMoney {
 		InternalRateofReturn = minKeyUsingCollections(NPVandRateList);
 		System.out.println(InternalRateofReturn);
 		return InternalRateofReturn;
-	}
-
-
-
-
-	public static void main(String[] args) {
-
-//		TimeValueOfMoney testor = new TimeValueOfMoney();
-
-//		System.out.print(testor.calculateIRR(5000.0, -5000.0, 0.0, 4));
-
 	}
 
 }

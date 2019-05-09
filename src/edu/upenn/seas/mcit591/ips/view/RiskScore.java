@@ -1,4 +1,5 @@
 package edu.upenn.seas.mcit591.ips.view;
+
 public class RiskScore {
 
 	public int numberofYears; // equal to number of years between expenditure year and now
@@ -10,35 +11,28 @@ public class RiskScore {
 	public int Q6Score; // the score from user's answer in multiple choice of Q6
 	public int Q7Score; // the score from user's length of investment time horizon
 
-
 	public int OverallRiskScore;
 	public String WillingRiskScore;
 	public String AbilityRiskScore;
 
 	/*
-	 * Method1 : The holding period length is an important metric for ability to tolerate
-	 * risk.
+	 * Method1 : The holding period length is an important metric for ability to
+	 * tolerate risk.
 	 */
-	
+
 	public void setQuestionAnswers() {
 		numberofYears = DataManager.getNumberofYears();
-		Q1Score= DataManager.getQuestion1();
-		Q2Score= DataManager.getQuestion2();
-		Q3Score= DataManager.getQuestion3();
-		Q4Score= DataManager.getQuestion4();
-		Q5Score= DataManager.getQuestion5();
-		Q6Score= DataManager.getQuestion6();
-		Q7Score= DataManager.getQuestion7();
+		Q1Score = DataManager.getQuestion1();
+		Q2Score = DataManager.getQuestion2();
+		Q3Score = DataManager.getQuestion3();
+		Q4Score = DataManager.getQuestion4();
+		Q5Score = DataManager.getQuestion5();
+		Q6Score = DataManager.getQuestion6();
+		Q7Score = DataManager.getQuestion7();
 	}
-	
-	
-	
-	
-	
+
 	public int getQ7Score(int numberofYears) {
-		
-		
-		
+
 		if (numberofYears <= 3) {
 
 			Q7Score = 0;
@@ -64,12 +58,13 @@ public class RiskScore {
 	/*
 	 * This method is to get Overall Risk Score for the user
 	 */
-	public int getOverallRiskScore(int numberofYears, int Q1Score, int Q2Score, int Q3Score, int Q4Score, int Q5Score,int Q6Score) {
-		
+	public int getOverallRiskScore(int numberofYears, int Q1Score, int Q2Score, int Q3Score, int Q4Score, int Q5Score,
+			int Q6Score) {
+
 //		setQuestionAnswers();
 
 		int RiskScore = Q1Score + Q2Score + Q3Score + Q4Score + Q5Score + Q6Score + getQ7Score(numberofYears);
-		System.out.println(RiskScore+"****");
+		System.out.println(RiskScore + "****");
 		if (RiskScore <= 25) {
 
 			OverallRiskScore = 1;
@@ -147,7 +142,7 @@ public class RiskScore {
 	 * This method is to get ability Risk Score for the user
 	 */
 
-	public String getAbilityRiskScore(int Q5Score, int Q6Score) {
+	public String getAbilityRiskScore(int Q5Score, int Q6Score, int numberofYears) {
 
 		int RiskScore2 = Q5Score + Q6Score + getQ7Score(numberofYears);
 
@@ -174,9 +169,11 @@ public class RiskScore {
 	 */
 
 	public void analyzeRisk() {
-		
-		System.out.println("Your overall risk score is "+OverallRiskScore+" out of 10. Your willingness to take risk is "+WillingRiskScore+". Your ability to take risk is "+ AbilityRiskScore+".");
-		
+
+		System.out.println(
+				"Your overall risk score is " + OverallRiskScore + " out of 10. Your willingness to take risk is "
+						+ WillingRiskScore + ". Your ability to take risk is " + AbilityRiskScore + ".");
+
 		if (!(AbilityRiskScore == WillingRiskScore)) {
 
 			System.out.println(
@@ -191,7 +188,7 @@ public class RiskScore {
 						+ " \n"
 						+ "Your personal comfort zone Ups and downs come standard in long-term investing, but not everyone is comfortable riding out the downturns. Since the best long-term plan is one you can stick with, we consider your willingness to take risk and endure the ups and downs of the market.\n"
 						+ "\n" + " ");
-		
+
 		System.out.println("Please proceed to check the recomended portfolio based on your risk profile.");
 	}
 

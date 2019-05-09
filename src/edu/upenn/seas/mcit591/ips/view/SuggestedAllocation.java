@@ -144,34 +144,5 @@ public class SuggestedAllocation {
 
 	}
 
-//	public double[] getOptimalCoefficient(double[] BenchmarkCoefficient) {
-//
-//		for (double i = -0.04; i < 0.04; i=i+0.01) {
-			
-//			for (int j=0; j<BenchmarkCoefficient.length-3; j++)
-			
-//			BenchmarkCoefficient[j]=Math.max(BenchmarkCoefficient[j]+i,0);
-//			BenchmarkCoefficient[j+3]=Math.max(BenchmarkCoefficient[j+3]-i,0);
-			
-
-//		}
-
-//		return OptimalCoefficient;
-
-//	}
-
-	/*
-	 * Step 2: make adjustment of the benchmark portfolio to find the optimal asset
-	 * allocation
-	 */
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		SuggestedAllocation testor = new SuggestedAllocation();
-
-		System.out.print(Arrays.toString(testor.getBenchmarkCoefficient(6)));
-
-	}
 
 }
