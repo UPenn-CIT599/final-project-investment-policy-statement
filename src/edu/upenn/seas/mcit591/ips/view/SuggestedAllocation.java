@@ -31,8 +31,8 @@ public class SuggestedAllocation {
 
 		if (OverallRiskScore < 3) {
 
-			System.out.println("Conservative Allocation n/ Short-term Bonds  30% "
-					+ "n/ Fixed Income 50%  n/ US Stock 15% n/ International 5% n/Alternative Assets 0% ");
+			//"Conservative Allocation n/ Short-term Bonds  30% "
+			//		+ "n/ Fixed Income 50%  n/ US Stock 15% n/ International 5% n/Alternative Assets 0%
 
 			VTIallocation = 0.15; // US Stock
 			VOallocation = 0.0; // US Midcap Stock
@@ -52,8 +52,8 @@ public class SuggestedAllocation {
 
 		else if (OverallRiskScore >= 3 && OverallRiskScore < 5) {
 
-			System.out.println("Moderately Conservative n/ Short-term Bonds 15% "
-					+ "n/ Fixed Income 50%  n/ US Stock 25% n/ International 5% n/Alternative Assets 5% ");
+			//"Moderately Conservative n/ Short-term Bonds 15% "
+			//		+ "n/ Fixed Income 50%  n/ US Stock 25% n/ International 5% n/Alternative Assets 5% ");
 
 			VTIallocation = 0.10; // US Stock
 			VOallocation = 0.10; // US Midcap
@@ -69,8 +69,7 @@ public class SuggestedAllocation {
 			VNQallocation = 0.05; // Real Estate
 			GLDallocation = 0.0; // Gold Commodity
 			
-			// Get return and standard deviation from FinanceEquations class
-
+		
 		}
 
 		else if (OverallRiskScore >= 5 && OverallRiskScore < 7) {

@@ -190,7 +190,7 @@ public class RiskTolerancePanel2 extends JPanel {
 		});
 		
 		for(Component comp: this.getComponents()) {
-			comp.setFont(new Font("Arial", Font.PLAIN, 14));
+			comp.setFont(new Font("Georgia", Font.PLAIN, 14));
 		}
 		
 	}

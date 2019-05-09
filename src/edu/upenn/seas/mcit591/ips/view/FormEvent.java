@@ -3,10 +3,10 @@ package edu.upenn.seas.mcit591.ips.view;
 import java.util.EventObject;
 
 /*
- * This FormEvent Class is created to set up some events that we need.
+ * This class sets the events and collet the user’s input information needed for further analysis. 
  */
-public class FormEvent extends EventObject{
-	
+public class FormEvent extends EventObject {
+
 	private static final long serialVersionUID = 6002427665101544218L;
 	private String name;
 	private String occupation;
@@ -15,33 +15,31 @@ public class FormEvent extends EventObject{
 	private String currentAssets;
 	private String retiermentGoal;
 	private String expenses;
-	
-	
-	public String getExpenses(){
+
+	public String getExpenses() {
 		return expenses;
 	}
-	
+
 	public void setExpenses(String expenses) {
 		this.expenses = expenses;
 	}
-	
-	public String getRetiermentGoal(){
+
+	public String getRetiermentGoal() {
 		return retiermentGoal;
 	}
-	
+
 	public void setRetiermentGoal(String retiermentGoal) {
 		this.retiermentGoal = retiermentGoal;
 	}
-	
-	
-	public String getCurrentAssets(){
+
+	public String getCurrentAssets() {
 		return currentAssets;
 	}
-	
+
 	public void setCurrentAssets(String currentAssets) {
 		this.currentAssets = currentAssets;
 	}
-	
+
 	public String getAge() {
 		return age;
 	}
@@ -57,7 +55,6 @@ public class FormEvent extends EventObject{
 	public void setAnnualIncome(String annualIncome) {
 		this.annualIncome = annualIncome;
 	}
-
 
 	public String getName() {
 		return name;
@@ -78,8 +75,9 @@ public class FormEvent extends EventObject{
 	public FormEvent(Object source) {
 		super(source);
 	}
-	
-	public FormEvent(Object source, String name, String occupation, String age, String annualIncome, String currentAssets, String expenses, String retiermentGoal) {
+
+	public FormEvent(Object source, String name, String occupation, String age, String annualIncome,
+			String currentAssets, String expenses, String retiermentGoal) {
 		super(source);
 		this.name = name;
 		this.occupation = occupation;

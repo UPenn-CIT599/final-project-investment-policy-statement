@@ -69,8 +69,8 @@ public class RiskTolerancePanel extends JPanel {
 		q1ButtonGroup.add(q1c);
 
 		JLabel q2 = new JLabel("<html>Q2: The global stock market is often volatile.<br> "
-				+ "If your entire investment portfolio lost 10% of its value in a month during a market decline, what would you do?<br> "
-				+ "Your behavior during a market downturn is important to understanding your risk tolerance.</html>");
+				+ "If your entire investment portfolio lost 10% of its value in a month during a market decline, what would you do?"
+				+ " Your behavior during a market downturn is important to understanding your risk tolerance.</html>");
 		q2.setBorder(new EmptyBorder(50, 0, 8, 0));
 		ButtonGroup q2ButtonGroup = new ButtonGroup();
 		JRadioButton q2a = new JRadioButton("Sell all of your investments");
@@ -187,7 +187,7 @@ public class RiskTolerancePanel extends JPanel {
 		});
 		
 		for(Component comp: this.getComponents()) {
-			comp.setFont(new Font("Arial", Font.PLAIN, 14));
+			comp.setFont(new Font("Georgia", Font.PLAIN, 14));
 		}
 		
 	}

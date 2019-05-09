@@ -23,17 +23,17 @@ public class ReturnObjectivePanel extends JPanel {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
         JLabel label1 = new JLabel(DataManager.getIRRstring());
-        label1.setFont(new Font("Bell MT", Font.BOLD, 16));
+        label1.setFont(new Font("Georgia", Font.BOLD, 16));
         label1.setBorder(new EmptyBorder(50, 0, 30, 0));
         this.add(label1);
         
         JLabel label3 = new JLabel("<html>From "+ DataManager.getAge() + " to 65, your required rate of return is <font color='red'>" + String.format("%.2f", DataManager.getIRR()) + "</font>%. By the end of " + (Calendar.getInstance().get(Calendar.YEAR) + DataManager.getNumberofYears())  + ", you will have an estimated asset of $"+ String.format("%.2f", DataManager.getFutureValue())+".</html>");
-        label3.setFont(new Font("Bell MT", Font.BOLD, 16));
+        label3.setFont(new Font("Georgia", Font.BOLD, 16));
         label3.setBorder(new EmptyBorder(50, 0, 90, 0));
         this.add(label3);
         
         JLabel label2 = new JLabel(DataManager.getIRRString2());
-        label2.setFont(new Font("Bell MT", Font.BOLD, 16));
+        label2.setFont(new Font("Georgia", Font.BOLD, 16));
         label2.setBorder(new EmptyBorder(50, 0, 30, 0));
         this.add(label2);
         

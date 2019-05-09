@@ -31,22 +31,22 @@ public class RecommendPortfolioPanel extends JPanel {
 
 		JLabel lblBasedOnYour = new JLabel(
 				"Based on your current risk tolerance, here's how you might want to invest.");
-		lblBasedOnYour.setFont(new Font("Arial", Font.BOLD, 15));
+		lblBasedOnYour.setFont(new Font("Georgia", Font.BOLD, 15));
 
 		JLabel lblYourRiskTolerance = new JLabel("Your risk tolerance:");
-		lblYourRiskTolerance.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblYourRiskTolerance.setFont(new Font("Georgia", Font.PLAIN, 16));
 
 		JLabel lblNeedCalculate = new JLabel("<html>" + DataManager.getRiskScore() + "</html>");
 		lblNeedCalculate.setForeground(new Color(0, 0, 255));
-		lblNeedCalculate.setFont(new Font("Arial", Font.PLAIN, 26));
+		lblNeedCalculate.setFont(new Font("Georgia", Font.PLAIN, 26));
 
 		JLabel lblNewLabel = new JLabel("out of 10");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Georgia", Font.PLAIN, 20));
 		lblNewLabel.setForeground(new Color(128, 128, 128));
 		// wrap text
 		JLabel lblForYourRisk = new JLabel(
 				"Based on your risk score, the portfolio allocation recommendation n/and breakdown with allocation percent is:");
-		lblForYourRisk.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblForYourRisk.setFont(new Font("Georgia", Font.PLAIN, 18));
 		// word wrap, and display text
 		JLabel ReturnInfo = new JLabel("The suggested asset allocation portfolio will generate a return​ of"
 				+ DataManager.getPortfolioReturn()
@@ -55,7 +55,7 @@ public class RecommendPortfolioPanel extends JPanel {
 				+ (DataManager.getPortfolioReturn() + DataManager.getPortfolioReturn()) * 100 + "%  to "
 				+ (DataManager.getPortfolioReturn() - DataManager.getPortfolioReturn()) * 100
 				+ "%. This data is calculated based on the historical performance data during 04/06/2009 - 05/07/2019");
-		ReturnInfo.setFont(new Font("Arial", Font.PLAIN, 12));
+		ReturnInfo.setFont(new Font("Georgia", Font.PLAIN, 12));
 
 		String[] TableHeading = { "Fund Description", "Percent Allocation", "Fund Name" };
 		JTable table = new JTable();
@@ -63,7 +63,7 @@ public class RecommendPortfolioPanel extends JPanel {
 		table.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		table.setToolTipText("Allocation Table");
 		table.setForeground(new Color(65, 105, 225));
-		table.setFont(new Font("Arial", Font.PLAIN, 14));
+		table.setFont(new Font("Georgia", Font.PLAIN, 14));
 		table.setBackground(Color.WHITE);
 		table.setModel(new DefaultTableModel(DataManager.getTable(), TableHeading) {
 			private static final long serialVersionUID = 7327750379410642910L;
