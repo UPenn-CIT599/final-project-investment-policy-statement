@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 public class RiskTolerancePanel2 extends JPanel {
 
+	// declare variables to collect user scores
 	public static int q1selected = 0;
 	public static int q2selected = 0;
 	public static int q3selected = 0;
@@ -25,6 +26,7 @@ public class RiskTolerancePanel2 extends JPanel {
 
 	private static final long serialVersionUID = 7133849259611110654L;
 	
+	// design the display of the questionnaire 
 	public RiskTolerancePanel2() {
 
 		Border innerBorder = BorderFactory.createTitledBorder("Risk Tolerance");

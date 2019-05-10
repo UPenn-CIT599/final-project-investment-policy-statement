@@ -33,7 +33,7 @@ public class IpsFrame extends JFrame {
 
 		this.cardPanel = getCardPanel();
 		getContentPane().add(cardPanel, BorderLayout.CENTER);
-
+        // Function to set buttons 
 		JPanel buttonPanel = createButtonPanel(cardPanel);
 		getContentPane().add(buttonPanel, BorderLayout.PAGE_END);
 		this.pack();
@@ -119,22 +119,27 @@ public class IpsFrame extends JFrame {
 		
 	}
 	
-
+// This is to set buttons panel 
 	private JPanel createButtonPanel(JPanel cardPanel) {
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBorder(BorderFactory.createEtchedBorder());
 		JButton startBtn = new JButton("Start");
-		startBtn.setFont(new Font("Arial", Font.PLAIN, 20));
+		startBtn.setFont(new Font("Georgia", Font.PLAIN, 20));
 		startBtn.setPreferredSize(new Dimension(100, 40));
 		JButton nextBtn = new JButton("Next");
 		nextBtn.setPreferredSize(new Dimension(100, 40));
-		nextBtn.setFont(new Font("Arial", Font.PLAIN, 20));
+		nextBtn.setFont(new Font("Georgia", Font.PLAIN, 20));
 		JButton previousBtn = new JButton("Previous");
 		previousBtn.setPreferredSize(new Dimension(150, 40));
-		previousBtn.setFont(new Font("Arial", Font.PLAIN, 20));
+		previousBtn.setFont(new Font("Georgia", Font.PLAIN, 20));
+		JButton exitBtn = new JButton("Exit");
+		previousBtn.setPreferredSize(new Dimension(150, 40));
+		previousBtn.setFont(new Font("Georgia", Font.PLAIN, 20));
+		
 		buttonPanel.add(startBtn);
 		buttonPanel.add(nextBtn);
 		buttonPanel.add(previousBtn);
+		buttonPanel.add(exitBtn);
 
 		// add startbtn in ActionListener
 		startBtn.addActionListener(new ActionListener() {
@@ -156,6 +161,24 @@ public class IpsFrame extends JFrame {
 			}
 		});
 
+		// add exitbtn in ActionListener
+		exitBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				// exit the program
+				 System.exit(0);
+				
+				Dimension dim = new Dimension(1200, 1000);
+                setPreferredSize(dim);
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        pack();
+                    }
+                });
+			}
+		});
+		
+		
 		// add nextbtn in ActionListener
 		nextBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -211,6 +234,12 @@ public class IpsFrame extends JFrame {
 							p.okButton.doClick();
 						}
 					}
+				}
+				
+				if(currentCard == 7) {
+
+					// exit the program
+					 System.exit(0);
 				}
 				
 				if (currentCard < 7) {

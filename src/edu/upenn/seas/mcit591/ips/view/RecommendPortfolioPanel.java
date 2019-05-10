@@ -21,6 +21,7 @@ public class RecommendPortfolioPanel extends JPanel {
 
 	private static final long serialVersionUID = 5404790883488079749L;
 
+// Set the display of the portfolio recommendation screen
 	public RecommendPortfolioPanel() {
 
 		Border innerBorder = BorderFactory.createTitledBorder("Recommend Portfolio");
@@ -28,32 +29,31 @@ public class RecommendPortfolioPanel extends JPanel {
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
 		JLabel lblBasedOnYour = new JLabel(
-				"Based on your current risk tolerance, here's how you might want to invest.");
+				"Based on your current risk tolerance, below is the suggested portfolio allocation.");
 		lblBasedOnYour.setFont(new Font("Georgia", Font.BOLD, 15));
 
 		JLabel lblYourRiskTolerance = new JLabel("Your risk tolerance:");
-		lblYourRiskTolerance.setFont(new Font("Georgia", Font.PLAIN, 16));
+		lblYourRiskTolerance.setFont(new Font("Georgia", Font.PLAIN, 15));
 
 		JLabel lblNeedCalculate = new JLabel("<html>" + DataManager.getRiskScore() + "</html>");
 		lblNeedCalculate.setForeground(new Color(0, 0, 255));
 		lblNeedCalculate.setFont(new Font("Georgia", Font.PLAIN, 26));
 
-		JLabel lblNewLabel = new JLabel("out of 10");
-		lblNewLabel.setFont(new Font("Georgia", Font.PLAIN, 20));
-		lblNewLabel.setForeground(new Color(128, 128, 128));
+		JLabel lblNewLabel = new JLabel("<html> out of 10 <html>");
+		lblNewLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
+//		lblNewLabel.setForeground(new Color(128, 128, 128));
 		// wrap text
 		JLabel lblForYourRisk = new JLabel(
-				"<html>Based on your risk score, the portfolio allocation recommendation <br/>and breakdown with allocation percent is:</html>");
-		lblForYourRisk.setFont(new Font("Georgia", Font.PLAIN, 18));
+				"<html>Based on your risk score, the portfolio allocation recommendation and breakdown with allocation <br/> percent is as below."
+						+ "The suggested asset allocation portfolio will generate a return​ of "
+						+ String.format("%.2f",DataManager.getPortfolioReturn()*100)
+						+ "% and <br/>the risk of the portfolio measured by the portfolio standard deviation is"
+						+ String.format("%.2f", DataManager.getPortfolioReturnStdDev()*100) + "%, which means your <br/>  portfolio return can range from "
+						+  String.format("%.2f", (DataManager.getPortfolioReturn() + DataManager.getPortfolioReturn()) * 100) + "%  to "
+						+ String.format("%.2f",(DataManager.getPortfolioReturn() - DataManager.getPortfolioReturn()) * 100)
+						+ "%. This data is calculated based on the historical <br/> performance data of the following ETFs during 04/06/2009 - 05/07/2019.");
+		lblForYourRisk.setFont(new Font("Georgia", Font.PLAIN, 15));
 		// word wrap, and display text
-		JLabel ReturnInfo = new JLabel("The suggested asset allocation portfolio will generate a return​ of"
-				+ DataManager.getPortfolioReturn()
-				+ "and the risk of the portfolio measured by the portfolio standard deviation is"
-				+ DataManager.getPortfolioReturnStdDev() + ", which means your portfolio return can range from "
-				+ (DataManager.getPortfolioReturn() + DataManager.getPortfolioReturn()) * 100 + "%  to "
-				+ (DataManager.getPortfolioReturn() - DataManager.getPortfolioReturn()) * 100
-				+ "%. This data is calculated based on the historical performance data during 04/06/2009 - 05/07/2019");
-		ReturnInfo.setFont(new Font("Georgia", Font.PLAIN, 12));
 
 		String[] TableHeading = { "Fund Description", "Percent Allocation", "Fund Name" };
 		JTable table = new JTable();

@@ -125,12 +125,12 @@ public class RiskScore {
 			WillingRiskScore = "Below Average";
 		}
 
-		else if (RiskScore1 > 30 && RiskScore1 <= 60) {
+		else if (RiskScore1 > 30 && RiskScore1 < 60) {
 
 			WillingRiskScore = "Average";
 		}
 
-		else if (RiskScore1 > 60) {
+		else if (RiskScore1 >= 60) {
 
 			WillingRiskScore = "Above Average";
 		}

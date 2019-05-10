@@ -14,7 +14,7 @@ public class PersonalInfoPanel extends JPanel {
 	
 	
 	/*
-	 * This class incorporates the error check to validate the user's input format
+	 * This class incorporates the error check to validate the user's input format for "Personal Info" 
 	 */
 
 	private static final long serialVersionUID = 4195362496344533857L;
@@ -141,10 +141,13 @@ public class PersonalInfoPanel extends JPanel {
 		this.add(formPanel);
 		
 		JPanel expainPanel = new JPanel();
-		JLabel hint1 = new JLabel("<html><div style='font-size:14px;font-weight:normal;text-align:left;widht:100%;'>Investment Horizon: Years between Today and Retirement</div></html>");
+		JLabel hint1 = new JLabel("<html><div style='font-size:14px;font-weight:normal;text-align:left;widht:100%;'>Investment Horizon: Years between Today and Desired Retirement Year</div></html>");
 		JLabel hint2 = new JLabel("<html><div style='font-size:14px;font-weight:normal;text-align:left;widht:100%;'>Investment Target: Desired Asset Amount at Retirement</div></html>");
+		JLabel hint3 = new JLabel("<html><div style='font-size:14px;font-weight:normal;text-align:left;widht:100%;'>Annual Income - Annual Expense: Fund available to invest each year </div></html>");		
+		
 		expainPanel.add(hint1);
 		expainPanel.add(hint2);
+		expainPanel.add(hint3);
 		expainPanel.setMaximumSize(new Dimension(850, 100));
 		add(expainPanel);
 		
@@ -160,7 +163,7 @@ public class PersonalInfoPanel extends JPanel {
 		errorPanel.setName("ErrorPanel");
 		String panelError = ErrorControl.getError();
 		errorLabel.setText(panelError);
-		errorLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
+		errorLabel.setFont(new Font("Georgia", Font.ITALIC, 16));
 		errorPanel.add(errorLabel);
 		errorPanel.setMaximumSize(new Dimension(850, 300));
 		if(errorLabel.isVisible()) {

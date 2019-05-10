@@ -71,9 +71,9 @@ public class SuggestedAllocation {
 
 		else if (OverallRiskScore >= 5 && OverallRiskScore < 7) {
 
-			System.out.println("Moderate Allocation n/ Short-term Bonds 5% "
-					+ "n/ Fixed Income 35%  n/ US Stock 35% n/ Foreign Market 10% "
-					+ "n/Emerging Market 5% n/Real Estate 5% n/Commodity 5% ");
+			//"Moderate Allocation n/ Short-term Bonds 5% "
+			//"n/ Fixed Income 35%  n/ US Stock 35% n/ Foreign Market 10% "
+			//"n/Emerging Market 5% n/Real Estate 5% n/Commodity 5% ");
 
 			VTIallocation = 0.20; // US Stock
 			VOallocation = 0.10; // US Midcap
@@ -92,9 +92,9 @@ public class SuggestedAllocation {
 
 		else if (OverallRiskScore >= 7 && OverallRiskScore < 9) {
 
-			System.out.println("Moderately Aggressive n/ Short-term Bonds 5% "
-					+ "n/ Fixed Income 15%  n/ US Stock 45% n/ Foreign Market 20% "
-					+ "n/Emerging Market 5% n/Real Estate 5% n/Commodity 5% ");
+			//"Moderately Aggressive n/ Short-term Bonds 5% "
+			//"n/ Fixed Income 15%  n/ US Stock 45% n/ Foreign Market 20% "
+			//"n/Emerging Market 5% n/Real Estate 5% n/Commodity 5% ");
 
 			VTIallocation = 0.15; // US Stock
 			VOallocation = 0.15; // US Midcap
@@ -113,9 +113,9 @@ public class SuggestedAllocation {
 
 		else if (OverallRiskScore == 9) {
 
-			System.out.println("Aggressive Allocation n/ Short-term Bonds 5% "
-					+ "n/ Fixed Income 15%  n/ US Stock 45% n/ Foreign Market 20% "
-					+ "n/Emerging Market 5% n/Real Estate 5% n/Commodity 5% ");
+			//"Aggressive Allocation n/ Short-term Bonds 5% "
+			//"n/ Fixed Income 15%  n/ US Stock 45% n/ Foreign Market 20% "
+			//"n/Emerging Market 5% n/Real Estate 5% n/Commodity 5% ");
 
 			VTIallocation = 0.15; // US Stock
 			VOallocation = 0.15; // US Midcap

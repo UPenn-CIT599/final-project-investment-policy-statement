@@ -3,7 +3,7 @@ package edu.upenn.seas.mcit591.ips.view;
 import java.util.EventObject;
 
 /*
- * This class sets the events and collet the user’s input information needed for further analysis. 
+ * This class sets the events and collect the user’s input information needed for further analysis. 
  */
 public class FormEvent extends EventObject {
 
