@@ -1,7 +1,6 @@
 package edu.upenn.seas.mcit591.ips.view;
 
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,11 +17,11 @@ import javax.swing.border.EmptyBorder;
 
 public class RiskTolerancePanel extends JPanel {
 	public static int sum;
-	private JButton okButton;
+	public JButton okButton;
 
-	public int q1selected = 0;
-	public int q2selected = 0;
-	public int q3selected = 0;
+	public static int q1selected = 0;
+	public static int q2selected = 0;
+	public static int q3selected = 0;
 	
 
 	
@@ -59,6 +58,9 @@ public class RiskTolerancePanel extends JPanel {
 		JRadioButton q1a = new JRadioButton("Maximizing gains");
 		JRadioButton q1b = new JRadioButton("Minimizing losses");
 		JRadioButton q1c = new JRadioButton("Both equally");
+		if(q1selected == 1) q1a.setSelected(true);
+		if(q1selected == 2) q1b.setSelected(true);
+		if(q1selected == 3) q1c.setSelected(true);
 		this.add(q1);
 		this.add(q1a);
 		this.add(q1b);
@@ -77,6 +79,11 @@ public class RiskTolerancePanel extends JPanel {
 		JRadioButton q2b = new JRadioButton("Sell some");
 		JRadioButton q2c = new JRadioButton("Keep all");
 		JRadioButton q2d = new JRadioButton("Buy more");
+		if(q2selected == 1) q2a.setSelected(true);
+		if(q2selected == 2) q2b.setSelected(true);
+		if(q2selected == 3) q2c.setSelected(true);
+		if(q2selected == 4) q2d.setSelected(true);
+		
 		this.add(q2);
 		this.add(q2a);
 		this.add(q2b);
@@ -95,6 +102,11 @@ public class RiskTolerancePanel extends JPanel {
 		JRadioButton q3b = new JRadioButton("I am willing to take a small amount of risk with my investments");
 		JRadioButton q3c = new JRadioButton("I am willing to take a moderate amount of risk with my investments");
 		JRadioButton q3d = new JRadioButton("I am willing to take as much risk as is needed with my investments");
+		
+		if(q3selected == 1) q3a.setSelected(true);
+		if(q3selected == 2) q3b.setSelected(true);
+		if(q3selected == 3) q3c.setSelected(true);
+		if(q3selected == 4) q3d.setSelected(true);
 
 		this.add(q3);
 		this.add(q3a);
@@ -110,6 +122,7 @@ public class RiskTolerancePanel extends JPanel {
 		
 
 		okButton = new JButton("OK");
+		okButton.setVisible(false);
 		add(okButton);
 		okButton.setAlignmentY(CENTER_ALIGNMENT);
 		okButton.addActionListener(new ActionListener() {
@@ -120,50 +133,50 @@ public class RiskTolerancePanel extends JPanel {
 				int point1 = 0;
 				int point2 = 0;
 				int point3 = 0;
-				int sum = 0;// keep track of the user selection with appointed
-							// value
 
 				if (q1a.isSelected()) {
-					point1 += 20;// make sure these are correct value for
+					point1 = 20;// make sure these are correct value for
 									// calculation
-					q1selected++;
+					q1selected = 1;
 				} else if (q1b.isSelected()) {
-					point1 += 5;
-					q1selected++;
+					point1 = 5;
+					q1selected = 2;
 				} else if (q1c.isSelected()) {
-					point1 += 10;
-					q1selected++;
+					point1 = 10;
+					q1selected = 3;
 				}
 
 				if (q2a.isSelected()) {
 					point2 += 0;// make sure these are correct value for
 								// calculation
-					q2selected++;
+					q2selected = 1;
 				} else if (q2b.isSelected()) {
-					point2 += 5;
-					q2selected++;
+					point2 = 5;
+					q2selected = 2;
 				} else if (q2c.isSelected()) {
-					point2 += 10;
-					q2selected++;
+					point2 = 10;
+					q2selected = 3;
 				} else if (q2d.isSelected()) {
-					point2 += 20;
-					q2selected++;
+					point2 = 20;
+					q2selected = 4;
 				}
 
 				if (q3a.isSelected()) {
 					point3 += 0;// make sure these are correct value for
 									// calculation
-					q3selected++;
+					q3selected = 1;
 				} else if (q3b.isSelected()) {
-					point3 += 5;
-					q2selected++;
+					point3 = 5;
+					q3selected = 2;
 				} else if (q3c.isSelected()) {
-					point3 += 10;
-					q2selected++;
+					point3 = 10;
+					q3selected = 3;
 				} else if (q3d.isSelected()) {
-					point3 += 20;
-					q2selected++;
+					point3 = 20;
+					q3selected = 4;
 				} 
+				
+				System.out.println(q1selected + " ---- " + q2selected + " ---- " + q3selected);//XXX
 				
 				//errorChecking
 				if(q1selected==0 && q2selected==0 && q1selected==0) {

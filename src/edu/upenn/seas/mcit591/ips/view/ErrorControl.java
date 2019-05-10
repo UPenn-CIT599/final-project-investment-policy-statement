@@ -20,7 +20,7 @@ public class ErrorControl {
 		switch(cardPanel) {
 		case 2: 
 			if(getPersonalInfoError()) {
-				setError("You did not fill in all the fields or you filled a field in wrong");
+//				setError("<html><h1 style='color:red;'>Please click Ok Button to confirm your input.</h1></html>");
 				return true;
 
 			}

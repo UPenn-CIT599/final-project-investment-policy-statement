@@ -1,12 +1,5 @@
 package edu.upenn.seas.mcit591.ips.view;
 
-import java.lang.Math.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-
-
 public class PortfolioAllocation {
 
 		int riskScore; // risk score from user

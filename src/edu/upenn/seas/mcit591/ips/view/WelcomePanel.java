@@ -4,11 +4,8 @@ import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
@@ -24,42 +21,47 @@ public class WelcomePanel extends JPanel {
 
 	public WelcomePanel() {
 
-		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
 		Border innerBorder = BorderFactory.createTitledBorder("Welcome");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
+		
+		
+		String welcomeTitle = "Welcome to Investment Policy Statement (IPS) Planner!";
+		
+		JLabel welcomeLabel = new JLabel(welcomeTitle);
+		welcomeLabel.setFont(new Font("Georgia", Font.BOLD, 30));
+		welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		welcomeLabel.setBorder(new EmptyBorder(50, 0, 80, 0));
+		this.add(welcomeLabel);
+		
+		String termsAndConditions = "<html>"
+				+ "<h1>TERMS AND CONDITIONS</h1>"
+				+ "<div style='font-size:15px;'>The purpose of this Investment Policy Statement (IPS) generator is to help you understand the investment goals <br />"
+				+ "and objectives and management policies applicable to your investment portfolio (\"Portfolio\").<br />"
+				+ "<br />This Investment Policy Statement will:<br />"
+				+ "<ol>"
+				+ "<li>Establish reasonable expectations, objectives and guidelines in the investment of your Port assets; </li>"
+				+ "<li>describing an appropriate risk posture for the investment of your Portfolio; and </li>"
+				+ "<li>specifying the target asset allocation policy.</li>"
+				+ "</ol>"
+				+ "<br />"
+				+ "<ul>"
+				+ "<li>This IPS is not a contract. This investment policy has not been reviewed by any legal counsel. </li>"
+				+ "<li>This IPS is intended to be a summary of an investment philosophy and the procedures that provide guidance for you. </li>"
+				+ "<li>The investment policies described in this IPS should be dynamic. </li>"
+				+ "<li>These policies should reflect your current status and philosophy regarding the investment of the Portfolio. </li>"
+				+ "<li>These policies should be reviewed and revised periodically to ensure they adequately reflect any changes related to your <br />"
+				+ "Portfolio, to you, or to the capital markets. </li>"
+				+ "<li>It is understood that there can be no guarantee about the attainment of the goals or investment objectives outlined herein.</li>"
+				+ "<li>This IPS generator DOES NOT collect or share any data you provided.</li>"
+				+ "</ul>"
+				+ "<br /><br />By clicking 'Next' you agree to the <b>TERMS AND CONDITIONS</b> above."
+				+ "</div></html>";
+		
+		JLabel termsAndConditionsLabel = new JLabel(termsAndConditions);
 
-		JTextField txtWelcome = new JTextField();
-		txtWelcome.setText("Welcome to Investment Policy Statement (IPS) Planner!");
-		txtWelcome.setFont(new Font("Georgia", Font.BOLD, 30));
-		txtWelcome.setAlignmentX(Component.CENTER_ALIGNMENT);
-		txtWelcome.setEditable(false);
-		txtWelcome.setBorder(new EmptyBorder(50, 50, 10, 0));// top, left, bottom, right
-		this.add(txtWelcome);
-
-		JTextArea txtPurpose = new JTextArea();
-		txtPurpose.setText("TERMS AND CONDITIONS"
-				+ "\r\n\r\nThe purpose of this Investment Policy Statement (IPS) generator is to help you understand the investment goals and objectives and management"
-				+ "\r\n\r\npolicies applicable to your investment portfolio (“Portfolio”)."
-				+ "\r\n\r\nThis Investment Policy Statement will:\r\n\r\n(1) establish reasonable expectations, objectives and guidelines in the investment of your Portfolio’s assets; "
-				+ "\r\n\r\n(2) describing an appropriate risk posture for the investment of your Portfolio; and "
-				+ "\r\n\r\n(3) specifying the target asset allocation policy."
-				+ "\r\n\r\n\r\n\r\nThis IPS is not a contract. This investment policy has not been reviewed by any legal counsel. This IPS is intended to be a summary of an "
-				+ "\r\n\r\ninvestment philosophy and the procedures that provide guidance for you. The investment policies described in this IPS should be dynamic. These   "
-				+ "\r\n\r\npolicies should reflect your current status and philosophy regarding the investment of the Portfolio. These policies should be reviewed and "
-				+ "\r\n\r\nrevised periodically to ensure they adequately reflect any changes related to your Portfolio, to you, or to the capital markets. It is understood"
-				+ "\r\n\r\nthat there can be no guarantee about the attainment of the goals or investment objectives outlined herein."
-				+ "\r\n\r\nThis IPS generator DOES NOT collect or share any data you provided."
-				+ "\r\n\r\n\r\n\r\nBy clicking 'Next' you agree to the TERMS AND CONDITIONS above.");
-		txtPurpose.setEditable(false);
-		txtPurpose.setFont(new Font("Georgia", Font.PLAIN, 16));
-		txtPurpose.setBorder(new EmptyBorder(50, 50, 10, 0));
-		this.add(txtPurpose);
-
-		JScrollPane scroll = new JScrollPane(txtPurpose, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		this.add(scroll);
+		termsAndConditionsLabel.setFont(new Font("Georgia", Font.PLAIN, 16));
+		this.add(termsAndConditionsLabel);
 
 	}
 }

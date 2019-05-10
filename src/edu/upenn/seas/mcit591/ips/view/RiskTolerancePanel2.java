@@ -1,7 +1,6 @@
 package edu.upenn.seas.mcit591.ips.view;
 
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,11 +17,11 @@ import javax.swing.border.EmptyBorder;
 
 public class RiskTolerancePanel2 extends JPanel {
 
-	public int q1selected = 0;
-	public int q2selected = 0;
-	public int q3selected = 0;
+	public static int q1selected = 0;
+	public static int q2selected = 0;
+	public static int q3selected = 0;
 	
-	private JButton okButton;
+	public JButton okButton;
 
 	private static final long serialVersionUID = 7133849259611110654L;
 	
@@ -48,6 +47,10 @@ public class RiskTolerancePanel2 extends JPanel {
 		JRadioButton q1b = new JRadioButton("Limited");
 		JRadioButton q1c = new JRadioButton("Good");
 		JRadioButton q1d = new JRadioButton("Extensive");
+		if(q1selected == 1) q1a.setSelected(true);
+		if(q1selected == 2) q1b.setSelected(true);
+		if(q1selected == 3) q1c.setSelected(true);
+		if(q1selected == 4) q1d.setSelected(true);
 		this.add(q1);
 		this.add(q1a);
 		this.add(q1b);
@@ -68,6 +71,13 @@ public class RiskTolerancePanel2 extends JPanel {
 		JRadioButton q2d = new JRadioButton("Dual income, at least one dependent");
 		JRadioButton q2e = new JRadioButton("Retired");
 		JRadioButton q2f = new JRadioButton("Financially independent");
+		if(q2selected == 1) q2a.setSelected(true);
+		if(q2selected == 2) q2b.setSelected(true);
+		if(q2selected == 3) q2c.setSelected(true);
+		if(q2selected == 4) q2d.setSelected(true);
+		if(q2selected == 5) q2e.setSelected(true);
+		if(q2selected == 6) q2f.setSelected(true);
+		
 		this.add(q2);
 		this.add(q2a);
 		this.add(q2b);
@@ -90,6 +100,11 @@ public class RiskTolerancePanel2 extends JPanel {
 		JRadioButton q3b = new JRadioButton("Bonds and/or bond funds ");
 		JRadioButton q3c = new JRadioButton("Stocks and/or stock funds");
 		JRadioButton q3d = new JRadioButton("International securities and/ or international funds");
+		
+		if(q3selected == 1) q3a.setSelected(true);
+		if(q3selected == 2) q3b.setSelected(true);
+		if(q3selected == 3) q3c.setSelected(true);
+		if(q3selected == 4) q3d.setSelected(true);
 
 		this.add(q3);
 		this.add(q3a);
@@ -105,6 +120,7 @@ public class RiskTolerancePanel2 extends JPanel {
 
 
 		okButton = new JButton("OK");
+		okButton.setVisible(false);
 		add(okButton);
 		okButton.setAlignmentY(CENTER_ALIGNMENT);
 		okButton.addActionListener(new ActionListener() {
@@ -115,60 +131,61 @@ public class RiskTolerancePanel2 extends JPanel {
 				int point1 = 0;
 				int point2 = 0;
 				int point3 = 0;
-				int sum = 0;// keep track of the user selection with appointed
-							// value
 
 				if (q1a.isSelected()) {
-					q1selected++;
-					point1 += 0;// make sure these are correct value for
+					q1selected = 1;
+					point1 = 0;// make sure these are correct value for
 									// calculation
 				} else if (q1b.isSelected()) {
-					q1selected++;
-					point1 += 5;
+					q1selected = 2;
+					point1 = 5;
 				} else if (q1c.isSelected()) {
-					q1selected++;
-					point1 += 10;
+					q1selected = 3;
+					point1 = 10;
 				}else if(q1d.isSelected()) {
-					q1selected++;
-					point1 += 20;
+					q1selected = 4;
+					point1 = 20;
 				}
 
 				if (q2a.isSelected()) {
-					q2selected++;
-					point2 += 10;// make sure these are correct value for
+					q2selected = 1;
+					point2 = 10;// make sure these are correct value for
 								// calculation
 				} else if (q2b.isSelected()) {
-					q2selected++;
-					point2 += 0;
+					q2selected = 2;
+					point2 = 0;
 				} else if (q2c.isSelected()) {
-					q2selected++;
-					point2 += 20;
+					q2selected = 3;
+					point2 = 20;
 				} else if (q2d.isSelected()) {
-					q2selected++;
-					point2 += 5;
+					q2selected = 4;
+					point2 = 5;
 				} else if (q2e.isSelected()) {
-					q2selected++;
-					point3 += 10;
+					q2selected = 5;
+					point2 = 10;
 				} else if (q2f.isSelected()) {
-					q2selected++;
-					point3 += 20;
+					q2selected =6;
+					point2 = 20;
 				}
 
 
 				if (q3a.isSelected()) {
-					q3selected++;
-					point3 += 0;// make sure these are correct value for
+					q3selected = 1;
+					point3 = 0;// make sure these are correct value for
 									// calculation
 				} else if (q3b.isSelected()) {
-					q3selected++;
-					point3 += 5;
+					q3selected = 2;
+					point3 = 5;
 				} else if (q3c.isSelected()) {
-					q3selected++;
-					point3 += 10;
+					q3selected = 3;
+					point3 = 10;
 				} else if (q3d.isSelected()) {
-					q3selected++;
-					point3 += 20;
+					q3selected = 4;
+					point3 = 20;
 				}
+				
+				System.out.println("Panel 2: " + q1selected + " ---- " + q2selected + " ---- " + q3selected);//XXX
+				
 				if(q1selected==0 && q2selected==0 && q1selected==0) {
 					ErrorControl.setTolerancePanelError(true);
 //				setpanelError(true);

@@ -1,12 +1,14 @@
 package edu.upenn.seas.mcit591.ips.view;
 
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
-import java.util.Calendar;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class PersonalInfoPanel extends JPanel {
 	
@@ -16,8 +18,8 @@ public class PersonalInfoPanel extends JPanel {
 	 */
 
 	private static final long serialVersionUID = 4195362496344533857L;
-	private FormPanel formPanel;
-
+	public FormPanel formPanel;
+	
 	public PersonalInfoPanel() {
 		JLabel errorLabel = new JLabel(" ");
 		errorLabel.setVisible(false);
@@ -42,12 +44,83 @@ public class PersonalInfoPanel extends JPanel {
 				retiermentGoal = e.getRetiermentGoal();
 				String expense = "";
 				expense = e.getExpenses();
-
+				
+				
+				StringBuilder errorHtml = new StringBuilder();
+				errorHtml.append("<html>");
+				errorHtml.append("<div style='color:red;font-size:14px;'>");
+				errorHtml.append("<ul>");
+				
+				if(StringUtils.isBlank(name)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Your name can't be empty.");
+					errorHtml.append("</li>");
+				}
+				if(StringUtils.isBlank(occupation)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Occupation Goal can't be empty.");
+					errorHtml.append("</li>");
+				}
+				if(StringUtils.isBlank(age)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Investment Horizon can't be empty.");
+					errorHtml.append("</li>");
+				}
+				else if(!StringUtils.isNumeric(age)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Investment Horizon can only be number.");
+					errorHtml.append("</li>");
+				}
+				if(StringUtils.isBlank(annualIncome)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Annual Income can't be empty.");
+					errorHtml.append("</li>");
+				}
+				else if(!StringUtils.isNumeric(annualIncome)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Annual Income can only be number.");
+					errorHtml.append("</li>");
+				}
+				if(StringUtils.isBlank(currentAssets)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Current Asset can't be empty.");
+					errorHtml.append("</li>");
+				}
+				else if(!StringUtils.isNumeric(currentAssets)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Current Asset can only be number.");
+					errorHtml.append("</li>");
+				}
+				if(StringUtils.isBlank(expense)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Annual Expense can't be empty.");
+					errorHtml.append("</li>");
+				}
+				else if(!StringUtils.isNumeric(expense)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Annual Expense can only be number.");
+					errorHtml.append("</li>");
+				}
+				if(StringUtils.isBlank(retiermentGoal)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Investment Goal can't be empty.");
+					errorHtml.append("</li>");
+				}
+				else if(!StringUtils.isNumeric(retiermentGoal)) {
+					errorHtml.append("<li>");
+					errorHtml.append("Investment Goal can only be number.");
+					errorHtml.append("</li>");
+				}
+				
+				errorHtml.append("<ul>");
+				errorHtml.append("</div>");
+				errorHtml.append("</html>");
+				
 				// error checking
-				if (name.equals("") || occupation.equals("") || age.equals("") || annualIncome.equals("")
-						|| currentAssets.equals("") || retiermentGoal.equals("") || expense.equals("")) {
+				if (StringUtils.contains(errorHtml, "<li>")) {
 					ErrorControl.setPersonalInfoError(true);
-
+					ErrorControl.setError(errorHtml.toString());
+					showErrorPanel(errorLabel);
 				} else {
 					errorLabel.setVisible(false);
 					ErrorControl.setError(" ");
@@ -64,17 +137,41 @@ public class PersonalInfoPanel extends JPanel {
 			}
 
 		});
+		formPanel.setMaximumSize(new Dimension(850, 400));
 		this.add(formPanel);
-
+		
+		JPanel expainPanel = new JPanel();
+		JLabel hint1 = new JLabel("<html><div style='font-size:14px;font-weight:normal;text-align:left;widht:100%;'>Investment Horizon: Years between Today and Retirement</div></html>");
+		JLabel hint2 = new JLabel("<html><div style='font-size:14px;font-weight:normal;text-align:left;widht:100%;'>Investment Target: Desired Asset Amount at Retirement</div></html>");
+		expainPanel.add(hint1);
+		expainPanel.add(hint2);
+		expainPanel.setMaximumSize(new Dimension(850, 100));
+		add(expainPanel);
+		
 		// setsError from errorChecking method
 		if (ErrorControl.getPersonalInfoError()) {
-			String panelError = ErrorControl.getError();
-			errorLabel.setText(panelError);
-			errorLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
-			errorLabel.setBorder(new EmptyBorder(50, 0, 90, 0));
-			this.add(errorLabel);
-			errorLabel.setVisible(true);
+			showErrorPanel(errorLabel);
 		}
 
+	}
+
+	private void showErrorPanel(JLabel errorLabel) {
+		JPanel errorPanel = new JPanel();
+		errorPanel.setName("ErrorPanel");
+		String panelError = ErrorControl.getError();
+		errorLabel.setText(panelError);
+		errorLabel.setFont(new Font("Bell MT", Font.BOLD, 16));
+		errorPanel.add(errorLabel);
+		errorPanel.setMaximumSize(new Dimension(850, 300));
+		if(errorLabel.isVisible()) {
+			for(Component c : this.getComponents()) {
+				if(StringUtils.equals(c.getName(), "ErrorPanel")) {
+					this.remove(c);
+				}
+			}
+		}
+		this.add(errorPanel);
+		errorLabel.setVisible(true);
+		
 	}
 }

@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,11 +12,10 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+
+import org.apache.commons.lang3.StringUtils;
 
 import edu.upenn.seas.mcit591.ips.main.MyCardLayout;
-import java.awt.Insets;
 
 public class IpsFrame extends JFrame {
 
@@ -26,9 +25,7 @@ public class IpsFrame extends JFrame {
 
 	private CardLayout cl;
 	
-	
 	public JPanel cardPanel; 
-	
 	
 	public IpsFrame() {
 
@@ -74,41 +71,51 @@ public class IpsFrame extends JFrame {
 		 * 6. Recommend Portfolio Panel
 		 */
 		
+		for(Component c : cardPanel.getComponents()) {
+			cardPanel.remove(c);
+		}
+		
 		// 1st panel
 		JPanel welcomePanel = new WelcomePanel();
+		welcomePanel.setName("welcomePanel");
 		welcomePanel.setPreferredSize(new Dimension(1200, 1000));
 		cardPanel.add(welcomePanel, "1");
 
 		// 2nd Panel
 		JPanel personalInfoPanel = new PersonalInfoPanel();
-		personalInfoPanel.setPreferredSize(new Dimension(800, 800));
+		personalInfoPanel.setName("personalInfoPanel");
+		personalInfoPanel.setPreferredSize(new Dimension(850, 800));
 		cardPanel.add(personalInfoPanel, "2");
 
 		// 3rd Panel
 		JPanel riskTolerancePanel = new RiskTolerancePanel();
+		riskTolerancePanel.setName("riskTolerancePanel");
 		riskTolerancePanel.setPreferredSize(new Dimension(800, 1000));
 		cardPanel.add(riskTolerancePanel, "3");
 		
 		// 4rd Panel
 		JPanel riskTolerancePanel2 = new RiskTolerancePanel2();
+		riskTolerancePanel2.setName("riskTolerancePanel2");
 		riskTolerancePanel2.setPreferredSize(new Dimension(800, 1000));
 		cardPanel.add(riskTolerancePanel2, "4");
 
 		// 5th Panel
 		JPanel riskObjectivePanel = new RiskObjectivePanel();
+		riskObjectivePanel.setName("riskObjectivePanel");
 		riskObjectivePanel.setPreferredSize(new Dimension(800, 1000));
 		cardPanel.add(riskObjectivePanel, "5");
 		
 		// 6th panel
 		JPanel returnObjectivePanel = new ReturnObjectivePanel();
+		returnObjectivePanel.setName("returnObjectivePanel");
 		returnObjectivePanel.setPreferredSize(new Dimension(800, 800));
 		cardPanel.add(returnObjectivePanel, "6");
 
 		// 7th panel
 		JPanel recommendPortfolioPanel = new RecommendPortfolioPanel();
+		recommendPortfolioPanel.setName("recommendPortfolioPanel");
 		recommendPortfolioPanel.setPreferredSize(new Dimension(800, 700));
 		cardPanel.add(recommendPortfolioPanel, "7");
-
 		
 	}
 	
@@ -117,8 +124,14 @@ public class IpsFrame extends JFrame {
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBorder(BorderFactory.createEtchedBorder());
 		JButton startBtn = new JButton("Start");
+		startBtn.setFont(new Font("Arial", Font.PLAIN, 20));
+		startBtn.setPreferredSize(new Dimension(100, 40));
 		JButton nextBtn = new JButton("Next");
+		nextBtn.setPreferredSize(new Dimension(100, 40));
+		nextBtn.setFont(new Font("Arial", Font.PLAIN, 20));
 		JButton previousBtn = new JButton("Previous");
+		previousBtn.setPreferredSize(new Dimension(150, 40));
+		previousBtn.setFont(new Font("Arial", Font.PLAIN, 20));
 		buttonPanel.add(startBtn);
 		buttonPanel.add(nextBtn);
 		buttonPanel.add(previousBtn);
@@ -147,10 +160,16 @@ public class IpsFrame extends JFrame {
 		nextBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String errorReport = "";
-				
 				//Sets data variables and updates cards 6 and 7 with proper info
 				if(currentCard == 4) {
+					
+					for( Component c : cardPanel.getComponents() ) {
+						if(StringUtils.equals("riskTolerancePanel2", c.getName())) {
+							RiskTolerancePanel2 p2  = (RiskTolerancePanel2) c;
+							p2.okButton.doClick();
+						}
+					}
+					
 					TimeValueOfMoney newCalculation = new TimeValueOfMoney();
 					
 					newCalculation.calculateIRR(DataManager.getCurrentAssetHolding(), DataManager.getfutureValue(), DataManager.getAnnuity(), DataManager.getNumberofYears());
@@ -176,6 +195,23 @@ public class IpsFrame extends JFrame {
 					drawCards(cardPanel);
 				}
 				
+				if(currentCard == 2) {
+					for( Component c : cardPanel.getComponents() ) {
+						if(StringUtils.equals("personalInfoPanel", c.getName())) {
+							PersonalInfoPanel p  = (PersonalInfoPanel) c;
+							p.formPanel.okBtn.doClick();
+						}
+					}
+				}
+				
+				if(currentCard == 3) {
+					for( Component c : cardPanel.getComponents() ) {
+						if(StringUtils.equals("riskTolerancePanel", c.getName())) {
+							RiskTolerancePanel p  = (RiskTolerancePanel) c;
+							p.okButton.doClick();
+						}
+					}
+				}
 				
 				if (currentCard < 7) {
 					//ErrorControl
@@ -183,7 +219,7 @@ public class IpsFrame extends JFrame {
 						cardPanel.revalidate();
 						cardPanel.repaint();
 						drawCards(cardPanel);
-					}else {
+					} else {
 					// increment the value of currentcard by 1
 					currentCard += 1;
 					}

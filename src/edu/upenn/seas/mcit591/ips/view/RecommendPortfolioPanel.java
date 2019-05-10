@@ -2,8 +2,6 @@ package edu.upenn.seas.mcit591.ips.view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -45,7 +43,7 @@ public class RecommendPortfolioPanel extends JPanel {
 		lblNewLabel.setForeground(new Color(128, 128, 128));
 		// wrap text
 		JLabel lblForYourRisk = new JLabel(
-				"Based on your risk score, the portfolio allocation recommendation n/and breakdown with allocation percent is:");
+				"<html>Based on your risk score, the portfolio allocation recommendation <br/>and breakdown with allocation percent is:</html>");
 		lblForYourRisk.setFont(new Font("Georgia", Font.PLAIN, 18));
 		// word wrap, and display text
 		JLabel ReturnInfo = new JLabel("The suggested asset allocation portfolio will generate a return​ of"

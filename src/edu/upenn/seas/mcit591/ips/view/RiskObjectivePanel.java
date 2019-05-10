@@ -1,7 +1,6 @@
 package edu.upenn.seas.mcit591.ips.view;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
@@ -91,7 +90,7 @@ public class RiskObjectivePanel extends JPanel {
         this.add(label10);
         
         JLabel label11 = new JLabel("(3) Your personal comfort zone:");
-        label11.setFont(new Font("Georgia", Font.PLAIN, 16));
+        label11.setFont(new Font("Georgia", Font.BOLD, 16));
         label11.setBorder(new EmptyBorder(50, 0, 10, 0));
         label11.setForeground(Color.darkGray);
         this.add(label11);
