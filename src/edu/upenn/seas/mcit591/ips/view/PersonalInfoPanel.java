@@ -137,7 +137,7 @@ public class PersonalInfoPanel extends JPanel {
 			}
 
 		});
-		formPanel.setMaximumSize(new Dimension(850, 400));
+		formPanel.setMaximumSize(new Dimension(1000, 400));
 		this.add(formPanel);
 		
 		JPanel expainPanel = new JPanel();
@@ -148,7 +148,7 @@ public class PersonalInfoPanel extends JPanel {
 		expainPanel.add(hint1);
 		expainPanel.add(hint2);
 		expainPanel.add(hint3);
-		expainPanel.setMaximumSize(new Dimension(850, 100));
+		expainPanel.setMaximumSize(new Dimension(1000, 100));
 		add(expainPanel);
 		
 		// setsError from errorChecking method
@@ -165,7 +165,7 @@ public class PersonalInfoPanel extends JPanel {
 		errorLabel.setText(panelError);
 		errorLabel.setFont(new Font("Georgia", Font.ITALIC, 16));
 		errorPanel.add(errorLabel);
-		errorPanel.setMaximumSize(new Dimension(850, 300));
+		errorPanel.setMaximumSize(new Dimension(1000, 300));
 		if(errorLabel.isVisible()) {
 			for(Component c : this.getComponents()) {
 				if(StringUtils.equals(c.getName(), "ErrorPanel")) {

@@ -125,10 +125,10 @@ public class FormPanel extends JPanel {
 		rightPanel.add(okBtn);
 		
 		for(Component c : leftPanel.getComponents()) {
-			c.setFont(new Font("Georgia", Font.PLAIN, 21));
+			c.setFont(new Font("Georgia", Font.PLAIN, 25));
 		}
 		for(Component c : rightPanel.getComponents()) {
-			c.setFont(new Font("Georgia", Font.PLAIN, 18));
+			c.setFont(new Font("Georgia", Font.PLAIN, 16));
 		}
 		
 		add(new JPanel());

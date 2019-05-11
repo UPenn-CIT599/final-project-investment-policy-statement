@@ -31,12 +31,12 @@ public class WelcomePanel extends JPanel {
 		JLabel welcomeLabel = new JLabel(welcomeTitle);
 		welcomeLabel.setFont(new Font("Georgia", Font.BOLD, 30));
 		welcomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		welcomeLabel.setBorder(new EmptyBorder(50, 0, 80, 0));
+		welcomeLabel.setBorder(new EmptyBorder(50, 0, 60, 0));
 		this.add(welcomeLabel);
 		
 		String termsAndConditions = "<html>"
 				+ "<h1>TERMS AND CONDITIONS</h1>"
-				+ "<div style='font-size:15px;'>The purpose of this Investment Policy Statement (IPS) generator is to help you understand the investment goals <br />"
+				+ "<div style='font-size:13px;'>The purpose of this Investment Policy Statement (IPS) generator is to help you understand the investment goals <br />"
 				+ "and objectives and management policies applicable to your investment portfolio (\"Portfolio\").<br />"
 				+ "<br />This Investment Policy Statement will:<br />"
 				+ "<ol>"

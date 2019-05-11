@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -43,7 +44,7 @@ public class IpsFrame extends JFrame {
         // Function to set visibility of JFrame. 
         this.setVisible(true); 
         
-        this.setLocation(150, 150);
+//        this.setLocation(150, 150);
 	}
 	
 	
@@ -71,50 +72,60 @@ public class IpsFrame extends JFrame {
 		 * 6. Recommend Portfolio Panel
 		 */
 		
+		String[] panels = {"welcomePanel", 
+				"personalInfoPanel", 
+				"riskTolerancePanel", 
+				"riskTolerancePanel2",
+				"riskObjectivePanel",
+				"returnObjectivePanel", 
+				"recommendPortfolioPanel"
+				};
 		for(Component c : cardPanel.getComponents()) {
-			cardPanel.remove(c);
+			if(Arrays.asList(panels).contains(c.getName())) {
+				cardPanel.remove(c);
+			}
 		}
 		
 		// 1st panel
 		JPanel welcomePanel = new WelcomePanel();
 		welcomePanel.setName("welcomePanel");
-		welcomePanel.setPreferredSize(new Dimension(1200, 1000));
+		welcomePanel.setPreferredSize(new Dimension(1200, 780));
 		cardPanel.add(welcomePanel, "1");
 
 		// 2nd Panel
 		JPanel personalInfoPanel = new PersonalInfoPanel();
 		personalInfoPanel.setName("personalInfoPanel");
-		personalInfoPanel.setPreferredSize(new Dimension(850, 800));
+		personalInfoPanel.setPreferredSize(new Dimension(1200, 780));
 		cardPanel.add(personalInfoPanel, "2");
 
 		// 3rd Panel
 		JPanel riskTolerancePanel = new RiskTolerancePanel();
 		riskTolerancePanel.setName("riskTolerancePanel");
-		riskTolerancePanel.setPreferredSize(new Dimension(800, 1000));
+		riskTolerancePanel.setPreferredSize(new Dimension(1200, 780));
 		cardPanel.add(riskTolerancePanel, "3");
 		
 		// 4rd Panel
 		JPanel riskTolerancePanel2 = new RiskTolerancePanel2();
 		riskTolerancePanel2.setName("riskTolerancePanel2");
-		riskTolerancePanel2.setPreferredSize(new Dimension(800, 1000));
+		riskTolerancePanel2.setPreferredSize(new Dimension(1200, 780));
 		cardPanel.add(riskTolerancePanel2, "4");
 
 		// 5th Panel
 		JPanel riskObjectivePanel = new RiskObjectivePanel();
 		riskObjectivePanel.setName("riskObjectivePanel");
-		riskObjectivePanel.setPreferredSize(new Dimension(800, 1000));
+		riskObjectivePanel.setPreferredSize(new Dimension(1200, 780));
 		cardPanel.add(riskObjectivePanel, "5");
 		
 		// 6th panel
 		JPanel returnObjectivePanel = new ReturnObjectivePanel();
 		returnObjectivePanel.setName("returnObjectivePanel");
-		returnObjectivePanel.setPreferredSize(new Dimension(800, 800));
+		returnObjectivePanel.setPreferredSize(new Dimension(1200, 780));
 		cardPanel.add(returnObjectivePanel, "6");
 
 		// 7th panel
 		JPanel recommendPortfolioPanel = new RecommendPortfolioPanel();
 		recommendPortfolioPanel.setName("recommendPortfolioPanel");
-		recommendPortfolioPanel.setPreferredSize(new Dimension(800, 700));
+		recommendPortfolioPanel.setPreferredSize(new Dimension(880, 780));
 		cardPanel.add(recommendPortfolioPanel, "7");
 		
 	}
@@ -133,8 +144,8 @@ public class IpsFrame extends JFrame {
 		previousBtn.setPreferredSize(new Dimension(150, 40));
 		previousBtn.setFont(new Font("Georgia", Font.PLAIN, 20));
 		JButton exitBtn = new JButton("Exit");
-		previousBtn.setPreferredSize(new Dimension(150, 40));
-		previousBtn.setFont(new Font("Georgia", Font.PLAIN, 20));
+		exitBtn.setPreferredSize(new Dimension(100, 40));
+		exitBtn.setFont(new Font("Georgia", Font.PLAIN, 20));
 		
 		buttonPanel.add(startBtn);
 		buttonPanel.add(nextBtn);
