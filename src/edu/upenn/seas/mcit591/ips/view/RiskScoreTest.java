@@ -15,7 +15,7 @@ class RiskScoreTest {
 
 		Q7Test.getQ7Score(NumberofYears);
 
-	}
+	} 
 
 	@Test
 	void testGetOverallRiskScore() {

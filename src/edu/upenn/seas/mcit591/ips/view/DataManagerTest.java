@@ -1,4 +1,4 @@
-package edu.upenn.seas.mcit591.ips.view;
+ package edu.upenn.seas.mcit591.ips.view;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,6 +16,6 @@ class DataManagerTest {
 		double rateofReturnVar=.06;
 		DataManager.updateTimeValueVars(Userage, currentAssetHoldingVar, futureValueVar, annuityVar, numberofYearsVar, rateofReturnVar);
 		
-	}
+	} 
 
 }
