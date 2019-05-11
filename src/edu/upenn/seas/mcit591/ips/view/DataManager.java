@@ -143,7 +143,6 @@ public class DataManager {
 		RiskScore getRiskScore = new RiskScore();
 		OverallScore = getRiskScore.getOverallRiskScore(numberofYears, getQuestion1(), getQuestion2(), getQuestion3(),
 				getQuestion4(), getQuestion5(), getQuestion6());
-		System.out.println(OverallScore + "****%%");
 		WillingnessScore = getRiskScore.getWillingnessRiskScore(getQuestion1(), getQuestion2(), getQuestion3(),
 				getQuestion4());
 		AbilityScore = getRiskScore.getAbilityRiskScore(getQuestion5(), getQuestion6(), numberofYears);
@@ -294,7 +293,6 @@ public class DataManager {
 
 	//
 	public static void setTableForAllocation() {
-//		Object[][] table = new Object[13][3];
 		double[] FundPercent = getFundPercent();
 		String[] vehicleDescription = getVehicleDescription();
 		String[] fundName = getFundName();
@@ -312,7 +310,6 @@ public class DataManager {
 					table[i][j] = fundName[i];
 					break;
 				}
-				System.out.println(table[i][j]);
 
 			}
 		}

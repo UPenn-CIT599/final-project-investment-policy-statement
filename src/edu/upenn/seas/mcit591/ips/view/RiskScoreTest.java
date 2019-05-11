@@ -28,7 +28,7 @@ class RiskScoreTest {
 		int Q4Score = 10;
 		int Q5Score = 10;
 		int Q6Score = 5;
-
+ 
 		OverallTest.getOverallRiskScore(numberofYears, Q1Score, Q2Score, Q3Score, Q4Score, Q5Score, Q6Score);
 	}
 
@@ -79,5 +79,14 @@ class RiskScoreTest {
 		AnalyzeTest.analyzeRisk();
 
 	}
+	@Test
+	void testAnalyzeRisk3() {
 
+		RiskScore AnalyzeTest = new RiskScore();
+
+		AnalyzeTest.AbilityRiskScore = "Average";
+		AnalyzeTest.WillingRiskScore = "Above Average";
+		AnalyzeTest.analyzeRisk();
+
+	}
 }

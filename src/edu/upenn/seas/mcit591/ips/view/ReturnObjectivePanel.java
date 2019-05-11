@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 /*
  * This class designs part of display on the Return Objective Panel 
  */
-
+ 
 
 public class ReturnObjectivePanel extends JPanel {
 	

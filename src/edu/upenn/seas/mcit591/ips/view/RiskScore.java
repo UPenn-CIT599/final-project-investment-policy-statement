@@ -183,7 +183,7 @@ public class RiskScore {
 		System.out.println(
 				"The recommended amount of risk  More risk usually means higher expected returns over the long term, but bigger ups and downs along the way. Too much risk could leave you at a loss   when you need the money, but too little may mean slower growth. We calculate the right balance for you based on:\n"
 						+ "How long you have to invest The younger you are, the longer you have for your portfolio to rebound from a significant downturn.\n"
-						+ " \n"
+			 			+ " \n"
 						+ " Your financial capacity for risk The more comfortable your finances, the more risk you can afford to take, and vice versa.\n"
 						+ " \n"
 						+ "Your personal comfort zone Ups and downs come standard in long-term investing, but not everyone is comfortable riding out the downturns. Since the best long-term plan is one you can stick with, we consider your willingness to take risk and endure the ups and downs of the market.\n"

@@ -28,7 +28,6 @@ public class RiskTolerancePanel extends JPanel {
 
 	// getter and setter to take the total scores for these three questions
 	public static void setSum(int sum) {
-		System.out.println(sum);
 		RiskTolerancePanel.sum = sum;
 	}
 
@@ -147,7 +146,7 @@ public class RiskTolerancePanel extends JPanel {
 				int point3 = 0;
 
 				if (q1a.isSelected()) {
-					point1 = 20;// make sure these are correct value for
+				 	point1 = 20;// make sure these are correct value for
 								// calculation
 					q1selected = 1;
 				} else if (q1b.isSelected()) {
@@ -157,7 +156,7 @@ public class RiskTolerancePanel extends JPanel {
 					point1 = 10;
 					q1selected = 3;
 				}
-
+ 
 				if (q2a.isSelected()) {
 					point2 += 0;// make sure these are correct value for
 								// calculation
@@ -188,7 +187,7 @@ public class RiskTolerancePanel extends JPanel {
 					q3selected = 4;
 				}
 
-				System.out.println(q1selected + " ---- " + q2selected + " ---- " + q3selected);// to test
+//				System.out.println(q1selected + " ---- " + q2selected + " ---- " + q3selected);// to test
 
 				// errorChecking
 				if (q1selected == 0 && q2selected == 0 && q1selected == 0) {

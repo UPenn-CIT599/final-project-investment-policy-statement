@@ -19,7 +19,6 @@ public class ErrorControl {
 		switch (cardPanel) {
 		case 2:
 			if (getPersonalInfoError()) {
-//				setError("<html><h1 style='color:red;'>Please click Ok Button to confirm your input.</h1></html>");
 				return true;
 
 			}
@@ -56,7 +55,6 @@ public class ErrorControl {
 
 	public static void setError(String phrase) {
 		errorToSend = phrase;
-		System.out.println(errorToSend + "^^");
 	}
 
 	public static String getError() {
