@@ -27,7 +27,7 @@ public class IpsFrame extends JFrame {
 	private CardLayout cl;
 	
 	public JPanel cardPanel; 
-	
+ 	
 	public IpsFrame() {
 
 		setTitle("Investment Policy Statement (IPS) Planner");
@@ -44,7 +44,7 @@ public class IpsFrame extends JFrame {
         // Function to set visibility of JFrame. 
         this.setVisible(true); 
         
-//        this.setLocation(150, 150);
+
 	}
 	
 	

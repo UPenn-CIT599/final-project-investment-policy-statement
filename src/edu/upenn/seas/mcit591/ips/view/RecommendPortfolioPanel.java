@@ -49,8 +49,8 @@ public class RecommendPortfolioPanel extends JPanel {
 						+ String.format("%.2f",DataManager.getPortfolioReturn()*100)
 						+ "% and <br/>the risk of the portfolio measured by the portfolio standard deviation is"
 						+ String.format("%.2f", DataManager.getPortfolioReturnStdDev()*100) + "%, which means your <br/>  portfolio return can range from "
-						+  String.format("%.2f", (DataManager.getPortfolioReturn() + DataManager.getPortfolioReturn()) * 100) + "%  to "
-						+ String.format("%.2f",(DataManager.getPortfolioReturn() - DataManager.getPortfolioReturn()) * 100)
+						+  String.format("%.2f", (DataManager.getPortfolioReturn() + DataManager.getPortfolioReturnStdDev()) * 100) + "%  to "
+						+ String.format("%.2f",(DataManager.getPortfolioReturn() - DataManager.getPortfolioReturnStdDev()) * 100)
 						+ "%. This data is calculated based on the historical <br/> performance data of the following ETFs during 04/06/2009 - 05/07/2019.");
 		lblForYourRisk.setFont(new Font("Georgia", Font.PLAIN, 15));
 		// word wrap, and display text

@@ -9,7 +9,7 @@ import java.awt.Insets;
 public class MyCardLayout extends CardLayout {
 
 	private static final long serialVersionUID = 7114035594923390307L;
-
+ 
 	@Override
     public Dimension preferredLayoutSize(Container parent) {
 
