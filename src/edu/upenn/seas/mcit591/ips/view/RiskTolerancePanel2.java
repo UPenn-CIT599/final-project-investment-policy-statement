@@ -188,7 +188,7 @@ public class RiskTolerancePanel2 extends JPanel {
 				
 				System.out.println("Panel 2: " + q1selected + " ---- " + q2selected + " ---- " + q3selected);//XXX
 				
-				if(q1selected==0 && q2selected==0 && q1selected==0) {
+				if(q1selected==0 && q2selected==0 && q3selected==0) {
 					ErrorControl.setTolerancePanelError(true);
 //				setpanelError(true);
 				
