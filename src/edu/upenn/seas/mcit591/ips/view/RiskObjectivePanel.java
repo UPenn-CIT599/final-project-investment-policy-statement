@@ -56,59 +56,50 @@ public class RiskObjectivePanel extends JPanel {
 					"<html><font color='red'>Your ability to take investment risk is not consistent with your willingness to take investment risk. We recomend you to balance these two options.</red></html>");
 			label4.setFont(new Font("Georgia", Font.BOLD, 16));
 			label4.setBorder(new EmptyBorder(30, 0, 10, 0));
-//			label4.setForeground(Color.darkGray);
 			this.add(label4);
 		}
 
 		JLabel label5 = new JLabel("Factors that impact your recommended risk score: ");
 		label5.setFont(new Font("Georgia", Font.BOLD, 14));
 		label5.setBorder(new EmptyBorder(30, 0, 10, 0));
-//        label5.setForeground(Color.darkGray);
 		this.add(label5);
 
 		JLabel label6 = new JLabel("<html>More risk usually means higher expected returns over the long term, "
 				+ "but bigger ups and downs along the way. "
 				+ "<br> Too much risk could leave you at a loss when you need the money, but too little may mean slower growth. "
 				+ "<br> We calculate the right balance for you based on:</html>");
-		// label6.setForeground(Color.darkGray);
 		label6.setFont(new Font("Georgia", Font.PLAIN, 14));
 		this.add(label6);
 
 		JLabel label7 = new JLabel("(1) How long you have to invest:");
 		label7.setFont(new Font("Georgia", Font.PLAIN, 14));
-//		label7.setForeground(Color.darkGray);
 		label7.setBorder(new EmptyBorder(30, 0, 10, 0));
 		this.add(label7);
 
 		JLabel label8 = new JLabel(
 				"The younger you are, the longer you have for your portfolio to rebound from a significant downturn.");
-//        label8.setForeground(Color.darkGray);
 		label8.setFont(new Font("Georgia", Font.PLAIN, 14));
 		this.add(label8);
 
 		JLabel label9 = new JLabel("(2)Your financial capacity for risk:");
 		label9.setFont(new Font("Georgia", Font.PLAIN, 14));
 		label9.setBorder(new EmptyBorder(30, 0, 10, 0));
-//        label9.setForeground(Color.darkGray);
 		this.add(label9);
 
 		JLabel label10 = new JLabel(
 				"The more comfortable your finances, the more risk you can afford to take, and vice versa.");
-//        label10.setForeground(Color.darkGray);
 		label10.setFont(new Font("Georgia", Font.PLAIN, 14));
 		this.add(label10);
 
 		JLabel label11 = new JLabel("(3) Your personal comfort zone:");
 		label11.setFont(new Font("Georgia", Font.PLAIN, 14));
 		label11.setBorder(new EmptyBorder(30, 0, 10, 0));
-//        label11.setForeground(Color.darkGray);
 		this.add(label11);
 
 		JLabel label12 = new JLabel(
 				"<html>Ups and downs come standard in long-term investing, but not everyone is comfortable riding out the downturns. "
 						+ "<br>Since the best long-term plan is one you can stick with, we consider your willingness to take risk and endure the ups and downs of the market.</html>");
 		label12.setFont(new Font("Georgia", Font.PLAIN, 16));
-//        label12.setForeground(Color.darkGray);
 		this.add(label12);
 
 	}

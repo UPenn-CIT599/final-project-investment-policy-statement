@@ -89,7 +89,8 @@ public class RecommendPortfolioPanel extends JPanel {
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 		table.setDefaultRenderer(String.class, centerRenderer);
-
+		
+		//set the layout of the panel display
 		GroupLayout gl_contentPane = new GroupLayout(this);
 		gl_contentPane
 				.setHorizontalGroup(
