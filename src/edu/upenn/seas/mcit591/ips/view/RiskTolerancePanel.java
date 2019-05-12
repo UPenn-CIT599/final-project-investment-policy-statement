@@ -187,12 +187,9 @@ public class RiskTolerancePanel extends JPanel {
 					q3selected = 4;
 				}
 
-
-
 				// errorChecking
 				if (q1selected == 0 && q2selected == 0 && q3selected == 0) {
 					ErrorControl.setTolerancePanelError(true);
-
 
 				} else {
 					ErrorControl.setError(" ");
@@ -203,7 +200,6 @@ public class RiskTolerancePanel extends JPanel {
 					DataManager.setQuestion3(point3);
 
 				}
-
 
 				// System.out.println("sum is "+ sum);
 

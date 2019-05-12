@@ -47,7 +47,6 @@ public class IpsFrame extends JFrame {
 
 	}
 	
-	
 	private JPanel getCardPanel() {
 
 		JPanel cardPanel = new JPanel();
